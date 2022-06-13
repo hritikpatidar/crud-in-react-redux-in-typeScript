@@ -12,6 +12,7 @@ function Table() {
     
     let state = useSelector((state: any) => state)
     const [tableData, setTableData] = useState(state);
+    const [index, setIndex] = useState<number>()
     const dispatch = useDispatch();
     const Navigate = useNavigate();
     
@@ -32,7 +33,9 @@ function Table() {
         e.preventDefault();
         //console.log("edit button ==>",state.user[index])
         let newData = state.user[index];
+        newData.index = index
         //dispatch(editData([newData]));
+        setIndex(index);
         setTableData(newData)
     }
 
@@ -55,7 +58,12 @@ function Table() {
         temp_element.counter = temp_element.counter+1;
         temp_state[0] = temp_element;
         setTableData( temp_state );
-        console.log(tableData)
+        console.log("tableData",tableData)
+       
+        let objIndex = state.user.findIndex(((tableData:any) => tableData.index === index));
+        console.log("objIndex",objIndex);
+        state.user[objIndex]=tableData  
+        console.log(state.user)
        
     }
 
