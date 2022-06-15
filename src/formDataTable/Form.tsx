@@ -53,7 +53,7 @@ function Form() {
             <div className='row'>
                 <div className="col-6">
                     <form className="position-absolute top-50 start-50 translate-middle border border-1 p-3" onSubmit={handalSubmit}>
-                        <h1>React form using typeScript</h1>
+                        <h1>React form functional component using typeScript</h1>
                         <div className="mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
                             <input type="texy" name="first_name" onChange={handalChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />

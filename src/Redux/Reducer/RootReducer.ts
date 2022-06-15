@@ -1,6 +1,6 @@
 
 
-import { editTableData, getData} from "../contants/Constants";
+import { editTableData,  getData, getDataForm1} from "../contants/Constants";
 
 const initialState: any = {
   user: []
@@ -22,9 +22,12 @@ let rootReducer = (state:any =initialState , action: any) => {
         user:action.payload
         
       }
-   
-      
-
+    case getDataForm1:
+      return{
+        ...state,
+        user:action.todo
+      }
+    
     default:
       
       return state

@@ -58,12 +58,12 @@ function Table() {
         temp_element.counter = temp_element.counter+1;
         temp_state[0] = temp_element;
         setTableData( temp_state );
-        console.log("tableData",tableData)
+        //console.log("tableData",tableData)
        
         let objIndex = state.user.findIndex(((tableData:any) => tableData.index === index));
         console.log("objIndex",objIndex);
         state.user[objIndex]=tableData  
-        console.log(state.user)
+        // console.log(state.user)
        
     }
 
