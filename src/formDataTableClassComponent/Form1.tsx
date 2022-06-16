@@ -52,8 +52,8 @@ class Form1 extends Component<any, MyState>{
     handalSubmit = (e: any) => {
         e.preventDefault();
 
-        console.log("value", this.state.student)
-        console.log("props", this.props)
+        //console.log("value", this.state.student)
+        //console.log("props", this.props)
         let value = this.props.state;
         value.push(this.state.student)
         // this.props.dispatch(getDataTable(value));
@@ -100,7 +100,7 @@ class Form1 extends Component<any, MyState>{
     }
 }
 const mapStateToProps = (state: any) => {
-    console.log("state", state)
+    //console.log("state", state)
     return {
         state: state.user
     };

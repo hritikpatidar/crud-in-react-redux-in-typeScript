@@ -55,13 +55,12 @@ function Table() {
         e.preventDefault();
         let temp_state = [...state.user];
 	    let temp_element = { ...temp_state[0] };
-        temp_element.counter = temp_element.counter+1;
         temp_state[0] = temp_element;
         setTableData( temp_state );
         //console.log("tableData",tableData)
        
         let objIndex = state.user.findIndex(((tableData:any) => tableData.index === index));
-        console.log("objIndex",objIndex);
+        // console.log("objIndex",objIndex);
         state.user[objIndex]=tableData  
         // console.log(state.user)
        
@@ -88,30 +87,27 @@ function Table() {
                             <form onSubmit={handalSubmit}>
                                 <div className="mb-1">
                                     <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
-                                    <input type="texy" name="first_name" value={tableData.first_name} onChange={handalChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    <input type="texy" name="first_name" value={tableData.first_name || ''} onChange={handalChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     <div id="emailHelp" className="form-text"></div>
                                 </div>
                                 <div className="mb-1">
                                     <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
-                                    <input type="text" name="last_name" value={tableData.last_name} onChange={handalChange} className="form-control" id="exampleInputPassword2" />
+                                    <input type="text" name="last_name" value={tableData.last_name || ''} onChange={handalChange} className="form-control" id="exampleInputPassword2" />
                                 </div>
                                 <div className="mb-1">
                                     <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
-                                    <input type="number" name="age" value={tableData.age} onChange={handalChange} className="form-control" id="exampleInputPassword3" />
+                                    <input type="number" name="age" value={tableData.age || ''} onChange={handalChange} className="form-control" id="exampleInputPassword3" />
                                 </div>
                                 <div className="mb-1">
                                     <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
-                                    <input type="email" name="email" value={tableData.email} onChange={handalChange} className="form-control" id="exampleInputPassword4" />
+                                    <input type="email" name="email" value={tableData.email || ''} onChange={handalChange} className="form-control" id="exampleInputPassword4" />
                                 </div>
                                
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
                             </form>
 
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Understood</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
