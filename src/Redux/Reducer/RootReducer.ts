@@ -3,37 +3,17 @@
 import { editTableData, getData, getDataForm1 } from "../contants/Constants";
 
 const initialState: any = {
-  user: [
-    {
-      first_name: "ritik",
-      last_name: "patidar",
-      age: "",
-      email: "",
-      password: "gfjsdf"
-    },
-    {
-      first_name: "kiran",
-      last_name: "",
-      age: 33,
-      email: "kiran@gmail.com",
-      password: ""
-    },
-    {
-      first_name: "pinkesh",
-      last_name: "",
-      age: "",
-      email: "pinkesh@gmail.com",
-      password: "sagdsd"
-    }]
+  user: []
 }
 
-let rootReducer = (state: any = initialState, action: any) => {
 
+let RegisterReducer = (state: any = initialState, action: any) => {
+  
   switch (action.type) {
     case getData:
       return {
         ...state,
-        user: action.payload
+        user: action.payload.data
 
         // user:[...state.user,action.payload]
         // user: [...state.user,action.data]
@@ -48,7 +28,6 @@ let rootReducer = (state: any = initialState, action: any) => {
         ...state,
         user: action.todo
       }
-
     default:
 
       return state
@@ -56,4 +35,4 @@ let rootReducer = (state: any = initialState, action: any) => {
 
 }
 
-export default rootReducer;
+export default RegisterReducer;

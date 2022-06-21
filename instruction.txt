@@ -1,7 +1,0 @@
-install typeScript templete command
-	-> npx create-react-app my-app --template typescript
-
-use in react project and using typescript using command 
-	-> npm install -g typescript    
-
-use in react

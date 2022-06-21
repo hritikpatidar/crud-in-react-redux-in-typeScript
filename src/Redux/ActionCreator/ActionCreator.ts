@@ -1,7 +1,7 @@
-import { editTableData, getData, getDataForm1} from "../contants/Constants"
+import { editTableData, getData, getDataForm1, login_api, addEmployees} from "../contants/Constants"
 
 export let getDataTable=(value:any)=>{
-    console.log("propss",value);
+    // console.log("propss",value);
     
     return{
         type:getData,
@@ -20,4 +20,19 @@ export const addTodo = (todo:any) => {
       todo: todo
     };
   };
+
+export const login = (user:any) =>{
+    debugger
+    return {
+        type: login_api,
+        payload:user
+    }
+}
+export const AddEmployes = (user:any)=>{
+    return {
+        type : addEmployees,
+        payload:user
+    }
+}
+
 
