@@ -20,7 +20,7 @@ function EmployeeTable() {
 
     useEffect(()=>{
         getData()
-    })
+    },[])
 
     //2.function defination
     const handleClose = () => setShow(false);

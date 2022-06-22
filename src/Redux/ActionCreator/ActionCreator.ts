@@ -1,4 +1,5 @@
-import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp} from "../contants/Constants"
+import ChangeProfile from "../../registerUser/pages/ChangeProfile"
+import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp, ChangeProfilePic} from "../contants/Constants"
 
 export let getDataTable=(value:any)=>{
     return{
@@ -47,6 +48,13 @@ export const dltEmp =(newData:any)=>{
     return{
         type:DeleteEmp,
         payload:newData
+    }
+}
+export const changeUserProfile=(image:string)=>{
+    debugger
+    return{
+        type:ChangeProfilePic,
+        payload:image
     }
 }
 
