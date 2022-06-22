@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { getDataTable } from '../Redux/ActionCreator/ActionCreator';
 
-
-
-
 function Table() {
     // state /hook
     
@@ -24,23 +21,20 @@ function Table() {
     //2. function defination
 
     let deleteTableRows=(index:number)=>{
-        let newState = state.user
+        let newState = state.register.user
         newState.splice(index,1);
         dispatch(getDataTable(newState))
     }
 
     let editButton=(index:number,e:any)=>{
         e.preventDefault();
-        //console.log("edit button ==>",state.user[index])
-        let newData = state.user[index];
+        let newData = state.register.user[index];
         newData.index = index
-        //dispatch(editData([newData]));
         setIndex(index);
         setTableData(newData)
     }
 
     let handalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        //console.log('okokok');
         let name = e.target.name;
         let value = e.target.value;
         setTableData(
@@ -53,22 +47,15 @@ function Table() {
 
     let handalSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let temp_state = [...state.user];
+        let temp_state = [...state.register.user];
 	    let temp_element = { ...temp_state[0] };
         temp_state[0] = temp_element;
         setTableData( temp_state );
-        //console.log("tableData",tableData)
        
-        let objIndex = state.user.findIndex(((tableData:any) => tableData.index === index));
-        // console.log("objIndex",objIndex);
-        state.user[objIndex]=tableData  
-        // console.log(state.user)
+        let objIndex = state.register.user.findIndex(((tableData:any) => tableData.index === index));
+        state.register.user[objIndex]=tableData  
        
     }
-
-    // console.log("state---->",state)
-    //console.log("tableData---->",tableData)
-
 
     //3. return statement /jsx
     return (
@@ -126,7 +113,7 @@ function Table() {
                 </thead>
                 <tbody>
                     {
-                        state.user.map((cv: any, index: number) => {
+                        state.register.user.map((cv: any, index: number) => {
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>

@@ -23,30 +23,22 @@ function Form() {
     const [data, setData] = useState<Idata>(initialState);
     const state = useSelector((state: any) => state)
     const dispatch = useDispatch()
-    //console.log("state", state)
-
     const Navigate = useNavigate();
 
     //2. function defination
     let handalSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //console.log(data)
-        // dispatch({ type: A, data });
-        //console.log("mystate",state.user)
-        let value = state.user;
+        let value = state.register.user;
         value.push(data)
-        //console.log(value)
         dispatch(getDataTable(value))
         Navigate('/table')
     }
     let handalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        //console.log('okokok');
         let name = e.target.name;
         let value = e.target.value;
         setData({ ...data, [name]: value });
 
     }
-    //console.log(data)
     //3. return statement/jsx
     return (
         <div className="container ">

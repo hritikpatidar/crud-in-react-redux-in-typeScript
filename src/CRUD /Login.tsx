@@ -1,10 +1,9 @@
-import './Login.css';
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import isLogin from '../Redux/middilware/IsLogin';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,21 +20,17 @@ let initialState: Iuser = {
 function Login() {
     //1. states/hook
     const [userData, setUserData] = useState<Iuser>(initialState)
-    const state = useSelector(state => state)
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
-    // console.log(dispatch)
+
     //2. function defination
     let handalLogin = (e: any) => {
-
         dispatch(isLogin(userData));
-        
-        navigate("/register")
+        navigate("/addemployees")
     }
 
     let handalChange = (e: any) => {
         const{ name,value} = e.target;
-        // console.log(name,value);
         setUserData({
             ...userData,
             [name]:value

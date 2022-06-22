@@ -1,5 +1,8 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import deleteEmployee from "../Reducer/DeleteEmployee";
+import EditEmployee from "../Reducer/EditEmployee";
+import EmpGetData from "../Reducer/EmpGetData";
 import LoginReducer from "../Reducer/LoginReducer";
 import RegisterReducer from "../Reducer/RootReducer";
 
@@ -7,6 +10,9 @@ import RegisterReducer from "../Reducer/RootReducer";
 let rootReducer = combineReducers({
     register : RegisterReducer,
     login : LoginReducer,
+    getEmpData:EmpGetData,
+    editEmployee :EditEmployee,
+    dltEmployee:deleteEmployee
 })
 
 const store = legacy_createStore(rootReducer,applyMiddleware(thunk));

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import IsRegister from '../Redux/middilware/IsRegister'
 
 
@@ -25,17 +26,15 @@ function AddEmployees() {
     //1. state/Hooks
     const [user, setUser] = useState<Iuser>(initialState)
     const dispatch = useDispatch<any>()
+    const navigate = useNavigate()
     //2. function defination
     let handalSubmit=()=>{
-        // console.log(user);
         const token1 = localStorage.getItem('token');
-        // console.log(token1)
         dispatch(IsRegister(user,token1))
-
+        navigate('/employeestable')
     }
 
     let handalChange=(e:any)=>{
-        // console.log("change")
         const {name,value} = e.target;
         setUser({
             ...user,
@@ -51,7 +50,7 @@ function AddEmployees() {
             <div className='row justify-content-md-center mt-4'>
                 <div className="col-6">
                     <form className=" position-absolute top-50 start-50 translate-middle border border-1 p-3" >
-                        <h1>Registration form</h1>
+                        <h1>Add Employee</h1>
                         <div className="mb-1">
                             <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
                             <input type="texy" name="name"  className="form-control" onChange={handalChange} id="exampleInputEmail1"  />

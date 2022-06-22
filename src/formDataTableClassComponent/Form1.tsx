@@ -30,7 +30,6 @@ class Form1 extends Component<any, MyState>{
                 email: "",
                 password: "",
             },
-            //data:[]
         }
 
     }
@@ -38,32 +37,24 @@ class Form1 extends Component<any, MyState>{
 
         const name = e.target.name;
         const value = e.target.value;
-        // console.log("mydata",name,value);
         this.setState({
             student: {
                 ...this.state.student,
                 [name]: value
             },
-            //data:[{...this.state.student,[name]:value}]
-
         });
 
     }
     handalSubmit = (e: any) => {
         e.preventDefault();
-
-        //console.log("value", this.state.student)
-        //console.log("props", this.props)
         let value = this.props.state;
         value.push(this.state.student)
-        // this.props.dispatch(getDataTable(value));
-        // dispatch(getDataTable(value))
         this.props.addTodo(value);
         this.props.navigate("/table1")
     }
     render() {
         //console.log(this.state.student)
-        // console.log("props",this.props)
+        console.log("props",this.props)
         return (
             <div className="container ">
                 <div className='row'>
@@ -100,16 +91,14 @@ class Form1 extends Component<any, MyState>{
     }
 }
 const mapStateToProps = (state: any) => {
-    //console.log("state", state)
     return {
-        state: state.user
+        state: state.register.user
     };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addTodo: (todo: any) => {
-            //console.log("todom",todo)
             dispatch(addTodo(todo))
         }
     }
@@ -117,5 +106,3 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export default connect(mapStateToProps, mapDispatchToProps) (withRouter (Form1))
 
-// const withConnect = connect(mapStateToProps, mapDispatchToProps);
-// export default compose(withConnect)(Form1)

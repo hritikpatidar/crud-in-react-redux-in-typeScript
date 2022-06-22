@@ -1,52 +1,42 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getDataTable } from '../Redux/ActionCreator/ActionCreator';
+import { dltEmp, editEmployee, empGetData } from '../Redux/ActionCreator/ActionCreator';
 import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function Table2() {
+function EmployeeTable() {
     //1. state/hook
-    const [show, setShow] = useState(false);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const state = useSelector((state: any) => state)
-    
     const [user, setUser] = useState<any>(state)
     const [index, setIndex] = useState<number>()
-    useEffect(() => {
-        getData();
-    }, [])
-    
-   
+    const [show, setShow] = useState(false);
 
-    // const dates = new Date(user.dob).toISOString().split('T')[0]
-
-
-    // console.log("data",dates)
+    useEffect(()=>{
+        getData()
+    })
 
     //2.function defination
     const handleClose = () => setShow(false);
-    const handleShow = (index:number) => {
-        // console.log("userData",state.register.user[index])
-        let newData = state.register.user[index]
+    const handleShow = (index: number) => {
+        let newData = state.getEmpData.userData[index]
         setUser(newData)
-        debugger
-        // console.log("newDAta",newData)
         setIndex(index)
         setShow(true)
     };
     let getData = async () => {
-        // console.log('okokok')
         const token1 = localStorage.getItem("token")
         try {
             const response = await axios.get("http://192.168.1.11:8000/api/employees", {
                 headers: { "Authorization": `${token1}` }
             })
-            // console.log("response", response)
-            dispatch(getDataTable(response))
+            dispatch(empGetData(response))
         } catch (error) {
 
         }
@@ -59,20 +49,54 @@ function Table2() {
             [name]: value
         })
     }
-    let handalSubmit = () => {
-        var ind:any = index
-        console.log(state.register?.user[ind])
-        var id = state.register?.user[ind]._id
-        
-        debugger
+    let handalEdit = async () => {
+        var ind: any = index
+        var id = state.getEmpData?.userData[ind]._id
+        const token1 = localStorage.getItem('token') || " ";
+        const data = {
+            name: user.name,
+            email: user.email,
+            dob: user.dob,
+            position: user.position,
+            technologies_known: user.technologies_known,
+            technologie_type: user.technologie_type
+        }
         try {
-            const response = axios.patch("http://192.168.1.11:8000/api/employees")
+            const response = await axios.patch('http://192.168.1.11:8000/api/employees/' + id, data,
+                { headers: { "Authorization": token1 } }
+            );
+
+            const objIndex = state.getEmpData.userData.findIndex((user:any)=>user._id === response.data._id)
+            state.getEmpData.userData[objIndex]=response.data  
+
+            dispatch(editEmployee(response))
+        
         } catch (error) {
-            
+
         }
 
     }
-    // console.log("stsjlhdhf",state?.register?.user)
+    let handalDelete=async(index:number)=>{
+        var id = state.getEmpData?.userData[index]._id;
+        const token1 = localStorage.getItem('token') || " ";
+        
+        try {
+            await axios.delete('http://192.168.1.11:8000/api/employees/' + id,{
+                headers: { "Authorization": token1 } 
+            })
+            
+            let newState = state.getEmpData.userData
+            newState.splice(index,1);
+
+            dispatch(dltEmp(newState))
+            
+        } catch (error) {
+            
+        }
+    }
+    let handalAddData =()=>{
+        navigate('/addemployees')
+    }
     //3. return statement / jsx
     return (
         <>
@@ -115,11 +139,12 @@ function Table2() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handalSubmit}>
+                    <Button variant="primary" onClick={handalEdit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
             </Modal>
+         
             <table className="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -136,7 +161,7 @@ function Table2() {
                 <tbody>
                     {
                         // moment(new Date()).format("DD/MM/YYYY")
-                        state?.register?.user.map((cv: any, index: number) => {
+                        state.getEmpData.userData.map((cv: any, index: number) => {
 
                             const dateString = cv.dob; // ISO8601 compliant dateString
                             const D = new Date(dateString);
@@ -151,8 +176,8 @@ function Table2() {
                                     <td>{cv.technologie_type}</td>
                                     <td>{cv.technologies_known}</td>
                                     <td>
-                                        <button className="btn btn-success btn-sm " onClick={()=>handleShow(index)}>Edit</button>
-                                        <button className="btn btn-danger btn-sm m-1">Delete</button>
+                                        <button className="btn btn-success btn-sm " onClick={() => handleShow(index)}>Edit</button>
+                                        <button className="btn btn-danger btn-sm m-1" onClick={()=>handalDelete(index)}>Delete</button>
                                     </td>
 
                                 </tr>
@@ -163,8 +188,11 @@ function Table2() {
 
                 </tbody>
             </table>
+            <Button variant="primary" onClick={handalAddData}>
+                Add More Data
+            </Button>
         </>
     )
 }
 
-export default Table2
+export default EmployeeTable

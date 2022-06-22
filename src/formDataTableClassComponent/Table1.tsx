@@ -32,26 +32,20 @@ class Table1 extends Component<any> {
         this.setState({
             userData: newData 
         });
-        // console.warn("componentDidMount");
     }
 
     handalEdit = (index: number) => {
-        
-        // console.log(this.props.user[index].index = index)
         let newData = this.props.user[index];
         newData.index = index
-        // console.log("index", newData)
         this.setState({
             userData: newData,
             index: index
         })
-        // console.log("edit button", this.state.userData.newData)
 
 
     }
 
     handalChange = (e: any) => {
-        //console.log("change", this.state.userData)
         let name = e.target.name;
         let value = e.target.value;
         this.setState({
@@ -64,10 +58,8 @@ class Table1 extends Component<any> {
     }
 
     handalDelete = (index: number) => {
-        // console.log("delete", this.props.user)
         let newState = this.props.user
         newState.splice(index, 1);
-        // console.log(newState)
         this.props.dispatch(getDataTable(newState))
         this.componentDidMount();
     }
@@ -78,14 +70,11 @@ class Table1 extends Component<any> {
         let temp_state = [...this.props.user];
         let temp_element = { ...temp_state[0] };
         temp_state[0] = temp_element;
-        // console.log("temp", temp_state)
         this.setState({
             userData: { temp_state }
         })
         
-        // console.log(this.state.userData.index = this.state.index)
         let objIndex = this.props.user.findIndex((obj: any) => obj.index === this.state.index);
-        // console.log("objIndex", objIndex);
         this.props.user[objIndex] = this.state.userData
     }
 
@@ -93,7 +82,6 @@ class Table1 extends Component<any> {
     render() {
         console.log(this.props.user)
         const user = this.props.user
-        // console.log("dsgf", this.state.userData)
 
         return (
             <>
@@ -175,7 +163,7 @@ class Table1 extends Component<any> {
 }
 const mapStateToProps = (state: any) => {
     //console.log(state.user)
-    return { user: state.user }
+    return { user: state.register.user }
 }
 
 export default connect(mapStateToProps, null)(withRouter(Table1))

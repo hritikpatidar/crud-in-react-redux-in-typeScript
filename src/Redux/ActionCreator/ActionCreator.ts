@@ -1,8 +1,6 @@
-import { editTableData, getData, getDataForm1, login_api, addEmployees} from "../contants/Constants"
+import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp} from "../contants/Constants"
 
 export let getDataTable=(value:any)=>{
-    // console.log("propss",value);
-    
     return{
         type:getData,
         payload:value
@@ -22,16 +20,33 @@ export const addTodo = (todo:any) => {
   };
 
 export const login = (user:any) =>{
-    debugger
     return {
         type: login_api,
         payload:user
+    }
+}
+export const empGetData = (data:any)=>{
+    return{
+        type:empData,
+        payload:data
     }
 }
 export const AddEmployes = (user:any)=>{
     return {
         type : addEmployees,
         payload:user
+    }
+}
+export const editEmployee = (newData:any)=>{
+    return{
+        type: EditEmp,
+        payload:newData.data
+    }
+}
+export const dltEmp =(newData:any)=>{
+    return{
+        type:DeleteEmp,
+        payload:newData
     }
 }
 
