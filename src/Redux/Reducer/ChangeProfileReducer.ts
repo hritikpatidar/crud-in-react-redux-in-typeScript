@@ -6,7 +6,6 @@ const initialState:any = {
 }
 
 let ChangeProfileReducer=(state:any=initialState,action:any)=>{
-    debugger
     switch(action.type){
         case ChangeProfilePic:
           return{

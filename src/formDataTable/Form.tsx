@@ -26,11 +26,11 @@ function Form() {
     const Navigate = useNavigate();
 
     //2. function defination
-    let handalSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    let handalSubmit =async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let value = state.register.user;
         value.push(data)
-        dispatch(getDataTable(value))
+        await dispatch(getDataTable(value))
         Navigate('/table')
     }
     let handalChange = (e: React.ChangeEvent<HTMLInputElement>) => {

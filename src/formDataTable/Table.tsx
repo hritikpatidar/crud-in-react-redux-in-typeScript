@@ -20,10 +20,10 @@ function Table() {
 
     //2. function defination
 
-    let deleteTableRows=(index:number)=>{
+    let deleteTableRows=async(index:number)=>{
         let newState = state.register.user
         newState.splice(index,1);
-        dispatch(getDataTable(newState))
+        await dispatch(getDataTable(newState))
     }
 
     let editButton=(index:number,e:any)=>{

@@ -6,14 +6,15 @@ import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
+import editEmployeData from '../Redux/middilware/editEmployeData';
 
 
 
 function EmployeeTable() {
     //1. state/hook
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const navigate = useNavigate()
-    const state = useSelector((state: any) => state)
+    const state = useSelector((state: any) => state?.getEmpData?.userData)
     const [user, setUser] = useState<any>(state)
     const [index, setIndex] = useState<number>()
     const [show, setShow] = useState(false);
@@ -25,7 +26,7 @@ function EmployeeTable() {
     //2.function defination
     const handleClose = () => setShow(false);
     const handleShow = (index: number) => {
-        let newData = state.getEmpData.userData[index]
+        let newData = state[index]
         setUser(newData)
         setIndex(index)
         setShow(true)
@@ -36,7 +37,7 @@ function EmployeeTable() {
             const response = await axios.get("http://192.168.1.11:8000/api/employees", {
                 headers: { "Authorization": `${token1}` }
             })
-            dispatch(empGetData(response))
+            await dispatch(empGetData(response))
         } catch (error) {
 
         }
@@ -50,8 +51,13 @@ function EmployeeTable() {
         })
     }
     let handalEdit = async () => {
+        debugger
+        ////////////////////////////////////////////////////////////////////////////
+        var state:any = state
         var ind: any = index
-        var id = state.getEmpData?.userData[ind]._id
+        console.log("state",state)
+        var id = state[ind]._id
+        
         const token1 = localStorage.getItem('token') || " ";
         const data = {
             name: user.name,
@@ -61,23 +67,13 @@ function EmployeeTable() {
             technologies_known: user.technologies_known,
             technologie_type: user.technologie_type
         }
-        try {
-            const response = await axios.patch('http://192.168.1.11:8000/api/employees/' + id, data,
-                { headers: { "Authorization": token1 } }
-            );
+        await dispatch(editEmployeData(id,token1,data,state))
 
-            const objIndex = state.getEmpData.userData.findIndex((user:any)=>user._id === response.data._id)
-            state.getEmpData.userData[objIndex]=response.data  
-
-            dispatch(editEmployee(response))
-        
-        } catch (error) {
-
-        }
+        ///////////////////////////////////////////////////////////////////////////////////
 
     }
     let handalDelete=async(index:number)=>{
-        var id = state.getEmpData?.userData[index]._id;
+        var id = state[index]._id;
         const token1 = localStorage.getItem('token') || " ";
         
         try {
@@ -85,10 +81,10 @@ function EmployeeTable() {
                 headers: { "Authorization": token1 } 
             })
             
-            let newState = state.getEmpData.userData
+            let newState = state
             newState.splice(index,1);
 
-            dispatch(dltEmp(newState))
+            await dispatch(dltEmp(newState))
             
         } catch (error) {
             
@@ -97,6 +93,7 @@ function EmployeeTable() {
     let handalAddData =()=>{
         navigate('/addemployees')
     }
+    console.log(state)
     //3. return statement / jsx
     return (
         <>
@@ -161,7 +158,7 @@ function EmployeeTable() {
                 <tbody>
                     {
                         // moment(new Date()).format("DD/MM/YYYY")
-                        state.getEmpData.userData.map((cv: any, index: number) => {
+                        state.map((cv: any, index: number) => {
 
                             const dateString = cv.dob; // ISO8601 compliant dateString
                             const D = new Date(dateString);

@@ -8,7 +8,7 @@ function IsRegister(user:any,token1:any) {
             const response =await axios.post('http://192.168.1.11:8000/api/employees',user,{
                 headers: {"Authorization" : token1} 
             })
-            dispatch(AddEmployes(response))
+            await dispatch(AddEmployes(response))
         } catch (error) {
 
         }

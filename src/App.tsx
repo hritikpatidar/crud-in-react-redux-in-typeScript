@@ -10,6 +10,7 @@ import Table1 from './formDataTableClassComponent/Table1';
 import Login from './CRUD /Login';
 import GetRegisterUser from './registerUser/GetRegisterUser';
 import ChangeProfile from './registerUser/pages/ChangeProfile';
+import UserRegister from './registerUser/UserRegister';
 
 function App() {
   const params = useParams()
@@ -23,14 +24,18 @@ function App() {
 
           <Route path='form1' element={<Form1 />} />
           <Route path='table1' element={<Table1 />} />
-
-          <Route path='login' element={<Login />} />
-
+            {/* A =>crud operation */}            
           <Route path='addemployees' element={<AddEmployees />} />
           <Route path='employeestable' element={<EmployeeTable />} />
 
+            {/* 1 */}
+          <Route path="userregister" element={<UserRegister />} />
+            {/* 2 */}
+          <Route path='login' element={<Login />} />
+            {/* 3 */}
           <Route path="registeruser" element={<GetRegisterUser />} />
-          <Route path="changeprofile/" element={<ChangeProfile />} />
+            {/* 4 */}
+          <Route path="changeprofile" element={<ChangeProfile />} />
 
           </Routes>
         </BrowserRouter>

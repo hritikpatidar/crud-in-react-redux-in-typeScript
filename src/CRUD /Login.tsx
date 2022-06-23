@@ -24,9 +24,9 @@ function Login() {
     const navigate = useNavigate()
 
     //2. function defination
-    let handalLogin = (e: any) => {
-        dispatch(isLogin(userData));
-        navigate("/addemployees")
+    let handalLogin =async (e: any) => {
+        await dispatch(isLogin(userData));
+        navigate("/registeruser")
     }
 
     let handalChange = (e: any) => {

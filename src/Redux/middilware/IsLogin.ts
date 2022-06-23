@@ -9,12 +9,12 @@ import { login } from "../ActionCreator/ActionCreator"
             const response =await axios.post('http://192.168.1.11:8000/api/user/login',userData)
             console.log("response",response);
             localStorage.setItem("token",response?.data?.token);
-            
+            localStorage.setItem('userData',JSON.stringify(response?.data))
             if(response.status === 200 ){
             }
            
-            dispatch(login(response))
-
+            await dispatch(login(response))
+            
         } catch (error) {
 
         }

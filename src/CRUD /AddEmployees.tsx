@@ -28,9 +28,9 @@ function AddEmployees() {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     //2. function defination
-    let handalSubmit=()=>{
+    let handalSubmit=async()=>{
         const token1 = localStorage.getItem('token');
-        dispatch(IsRegister(user,token1))
+        await dispatch(IsRegister(user,token1))
         navigate('/employeestable')
     }
 
