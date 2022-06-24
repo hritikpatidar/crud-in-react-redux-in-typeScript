@@ -2,10 +2,10 @@
 
 import axios from "axios"
 import { changeUserProfile } from "../ActionCreator/ActionCreator"
+import Swal from 'sweetalert2'
+
 
 function ProfileUpdate(image:any,auth_token:any){
-    // console.log("profileupdate",image)
-    debugger
     return async(dispatch:any)=>{
         try {
             const response:any = await axios.patch("http://192.168.1.11:8000/api/user/update",image,{
@@ -15,12 +15,17 @@ function ProfileUpdate(image:any,auth_token:any){
                 }
             })
             localStorage.setItem("userData",JSON.stringify(response.data))
-            // console.log("responsee",response.data,navigate)
-            debugger
+            
             await dispatch(changeUserProfile(response.data))
 
         } catch (error) {
-            
+            // if(error.response.status == 400){
+            //     Swal.fire(
+            //         error.code,
+            //         error.message,
+            //         'error'
+            //     )
+            // }
         }
     }
 }

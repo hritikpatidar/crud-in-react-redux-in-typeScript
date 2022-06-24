@@ -5,7 +5,7 @@ const initialState:any = {
     userData:[]
 }
 
-let EmpGetData=(state:any=initialState, action:any)=>{
+let GetEmpReducer=(state:any=initialState, action:any)=>{
   switch(action.type){
       case empData:
         return{
@@ -16,4 +16,4 @@ let EmpGetData=(state:any=initialState, action:any)=>{
   return state
 }
 
-export default EmpGetData
+export default GetEmpReducer

@@ -1,5 +1,5 @@
 
-import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp, ChangeProfilePic, registerUser} from "../contants/Constants"
+import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp, ChangeProfilePic, registerUser, getUserRegister} from "../contants/Constants"
 
 export let getDataTable=(value:any)=>{
     return{
@@ -50,6 +50,13 @@ export const dltEmp =(newData:any)=>{
         payload:newData
     }
 }
+export const userRegister=(user:any)=>{
+    return{
+        type:getUserRegister,
+        payload:user
+    }
+
+}
 export const getRegisterUser=(userData:any)=>{
     return{
         type:registerUser,
@@ -57,7 +64,6 @@ export const getRegisterUser=(userData:any)=>{
     }
 }
 export const changeUserProfile=(image:string)=>{
-    debugger
     return{
         type:ChangeProfilePic,
         payload:image

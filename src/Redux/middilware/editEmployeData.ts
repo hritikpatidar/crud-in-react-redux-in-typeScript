@@ -1,6 +1,6 @@
 import axios from "axios"
-import { useSelector } from "react-redux"
-import { editEmployee, getRegisterUser, login } from "../ActionCreator/ActionCreator"
+import { editEmployee} from "../ActionCreator/ActionCreator"
+import Swal from 'sweetalert2'
 
 
  function editEmployeData(id:any,token1:any,data:any,state:any) {
@@ -16,7 +16,13 @@ import { editEmployee, getRegisterUser, login } from "../ActionCreator/ActionCre
             await dispatch(editEmployee(response))
         
         } catch (error) {
-
+            // if(error.response.status == 400){
+            //     Swal.fire(
+            //         error.code,
+            //         error.message,
+            //         'error'
+            //     )
+            // }
         }
 
     }

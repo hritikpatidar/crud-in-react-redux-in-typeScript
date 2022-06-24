@@ -12,7 +12,7 @@ section > label{
     height: 10em;
     cursor: pointer;
     font-size: large;
-    border-radius: 50%;
+    border-radius: 350%;
 
 }
 label >input{

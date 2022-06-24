@@ -3,18 +3,20 @@ import thunk from "redux-thunk";
 import ChangeProfileReducer from "../Reducer/ChangeProfileReducer";
 import deleteEmployee from "../Reducer/DeleteEmployee";
 import EditEmployee from "../Reducer/EditEmployee";
-import EmpGetData from "../Reducer/EmpGetData";
+import GetEmpReducer from "../Reducer/GetEmpReducer";
 import GetRegisterUserReducer from "../Reducer/GetRegisterUserReducer";
 import LoginReducer from "../Reducer/LoginReducer";
 import RegisterReducer from "../Reducer/RootReducer";
+import UserRegisterReducer from "../Reducer/UserRegisterreducer";
 
 
 let rootReducer = combineReducers({
     register : RegisterReducer,
     login : LoginReducer,
-    getEmpData:EmpGetData,
+    getEmpData:GetEmpReducer,
     editEmployee :EditEmployee,
     dltEmployee:deleteEmployee,
+    userRegister:UserRegisterReducer,
     changeuserProfile:ChangeProfileReducer,
     GetRegisterUser: GetRegisterUserReducer
 })

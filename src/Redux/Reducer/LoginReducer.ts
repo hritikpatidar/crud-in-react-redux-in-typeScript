@@ -2,7 +2,7 @@ import React from 'react'
 import { login_api } from '../contants/Constants'
 
 const initialState:any = {
-    userData:{}
+    userData:[]
 }
 
 let LoginReducer=(state:any=initialState, action:any)=>{

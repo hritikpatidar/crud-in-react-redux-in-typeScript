@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { changeUserProfile } from '../Redux/ActionCreator/ActionCreator'
 import IsGetRegisterUser from '../Redux/middilware/IsGetRegisterUser'
+import isLogOut from '../Redux/middilware/isLogOut'
+import Swal from 'sweetalert2'
 
 function GetRegisterUser() {
     //1. state/hook
@@ -25,12 +27,21 @@ function GetRegisterUser() {
         await dispatch(changeUserProfile(newData))
         navigate("/changeprofile");
     }
-
-
-    // console.log("state",state)
+    let handalLogOut=async()=>{
+        var token = localStorage.getItem("token");
+        var response = await dispatch(isLogOut(token))
+        
+        if(response.status == 200){
+            Swal.fire(
+                response.data.message,
+                response.statusText,
+                'success'
+            )
+            navigate("/login")
+        }
+    }
     const userData:any =localStorage.getItem("userData")
     const data =JSON.parse(userData)
-    // console.log("userData",data)
     //3. return statement/jsx
     return (
         <table className="table table-dark table-striped">
@@ -45,8 +56,6 @@ function GetRegisterUser() {
             </thead>
             <tbody>
                 {
-                    
-                    // moment(new Date()).format("DD/MM/YYYY")
                     state.map((cv: any, index: number) => {
                        
                         return (
@@ -57,9 +66,12 @@ function GetRegisterUser() {
                                 <td><img src={cv.profilePic} /></td>
                                 <td>
                                 {
-                                    data.email== cv.email
+                                    data.data.email== cv.email
                                     ?
-                                    <button className="btn btn-success btn-sm " onClick={()=>changeProfile(index)} >Change Profile</button>
+                                    <>
+                                        <button className="btn btn-success btn-sm " onClick={()=>changeProfile(index)} >Change Profile</button>
+                                        <button className="btn btn-danger btn-sm ms-2 " onClick={handalLogOut} >LogOut</button>
+                                    </>
                                     : null
                                 }   
                                 </td>

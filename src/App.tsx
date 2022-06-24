@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import AddEmployees from './CRUD /AddEmployees';
 import EmployeeTable from './CRUD /EmployeeTable';
 import Form from './formDataTable/Form';
@@ -8,9 +9,9 @@ import Table from './formDataTable/Table';
 import Form1 from './formDataTableClassComponent/Form1';
 import Table1 from './formDataTableClassComponent/Table1';
 import Login from './CRUD /Login';
-import GetRegisterUser from './registerUser/GetRegisterUser';
-import ChangeProfile from './registerUser/pages/ChangeProfile';
-import UserRegister from './registerUser/UserRegister';
+import GetRegisterUser from './crudregisterUser/GetRegisterUser';
+import ChangeProfile from './crudregisterUser/pages/ChangeProfile';
+import UserRegister from './crudregisterUser/UserRegister';
 
 function App() {
   const params = useParams()
@@ -33,7 +34,7 @@ function App() {
             {/* 2 */}
           <Route path='login' element={<Login />} />
             {/* 3 */}
-          <Route path="registeruser" element={<GetRegisterUser />} />
+          <Route path="getregisteruser" element={<GetRegisterUser />} />
             {/* 4 */}
           <Route path="changeprofile" element={<ChangeProfile />} />
 

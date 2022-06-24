@@ -1,27 +1,27 @@
-import axios from 'axios';
+
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { dltEmp, editEmployee, empGetData } from '../Redux/ActionCreator/ActionCreator';
 import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import editEmployeData from '../Redux/middilware/editEmployeData';
-
+import getEmployeeData from '../Redux/middilware/getEmployeeData';
+import isdeleteEmployee from '../Redux/middilware/isdeleteEmployee';
 
 
 function EmployeeTable() {
     //1. state/hook
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
-    const state = useSelector((state: any) => state?.getEmpData?.userData)
+    const state = useSelector((state: any) => state.getEmpData.userData)
     const [user, setUser] = useState<any>(state)
     const [index, setIndex] = useState<number>()
     const [show, setShow] = useState(false);
 
     useEffect(()=>{
         getData()
-    },[])
+    },[user]);
 
     //2.function defination
     const handleClose = () => setShow(false);
@@ -33,27 +33,17 @@ function EmployeeTable() {
     };
     let getData = async () => {
         const token1 = localStorage.getItem("token")
-        try {
-            const response = await axios.get("http://192.168.1.11:8000/api/employees", {
-                headers: { "Authorization": `${token1}` }
-            })
-            await dispatch(empGetData(response))
-        } catch (error) {
-
-        }
-    }
-
+        await dispatch(getEmployeeData(token1))
+    };
     let handalChange = (e: any) => {
         const { name, value } = e.target;
         setUser({
             ...user,
             [name]: value
         })
-    }
+    };
     let handalEdit = async () => {
         debugger
-        ////////////////////////////////////////////////////////////////////////////
-        var state:any = state
         var ind: any = index
         console.log("state",state)
         var id = state[ind]._id
@@ -69,31 +59,20 @@ function EmployeeTable() {
         }
         await dispatch(editEmployeData(id,token1,data,state))
 
-        ///////////////////////////////////////////////////////////////////////////////////
-
-    }
-    let handalDelete=async(index:number)=>{
-        var id = state[index]._id;
-        const token1 = localStorage.getItem('token') || " ";
         
-        try {
-            await axios.delete('http://192.168.1.11:8000/api/employees/' + id,{
-                headers: { "Authorization": token1 } 
-            })
-            
-            let newState = state
-            newState.splice(index,1);
 
-            await dispatch(dltEmp(newState))
-            
-        } catch (error) {
-            
-        }
-    }
+    };
+    let handalDelete=async(index:number)=>{
+        let newState = state
+        let id = state[index]._id;
+        const token1 = localStorage.getItem('token') || " ";
+        await dispatch(isdeleteEmployee(id,token1,newState,index))
+        
+    };
     let handalAddData =()=>{
         navigate('/addemployees')
-    }
-    console.log(state)
+    };
+    // console.log("state",state)
     //3. return statement / jsx
     return (
         <>
@@ -141,7 +120,7 @@ function EmployeeTable() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-         
+            
             <table className="table table-dark table-striped">
                 <thead>
                     <tr>
