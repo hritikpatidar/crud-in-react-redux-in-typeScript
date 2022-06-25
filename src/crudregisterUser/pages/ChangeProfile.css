@@ -18,6 +18,4 @@ section > label{
 label >input{
     display: none;
 }
-label > img{
-    border-radius: 50%;
-}
+

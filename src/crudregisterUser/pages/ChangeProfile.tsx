@@ -3,6 +3,7 @@ import './ChangeProfile.css'
 import { useDispatch, useSelector } from 'react-redux'
 import ProfileUpdate from '../../Redux/middilware/ProfileUpdate'
 import { useNavigate } from 'react-router-dom'
+import Header from '../../component/Header'
 
 function ChangeProfile() {
     //1. state/hook
@@ -13,22 +14,15 @@ function ChangeProfile() {
 
 
     //2. function defination
-    let handalChange = async (e: any) => {
-        const selectfiles = e.target.files[0];
-        // console.log("selectedfile",selectfiles);
-        image.profilePic = selectfiles;
-
-        const auth_token = localStorage.getItem("token")
-        await dispatch(ProfileUpdate(image, auth_token))
-        navigate("/getregisteruser")
-
+    let handalChange=()=>{
+        
     }
   
     // console.log("state",newData)
     //3. return statement / jsx
     return (
         <>
-
+            <Header />
             <section>
                 <label>
                     <img src={state.profilePic} />

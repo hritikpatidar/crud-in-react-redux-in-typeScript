@@ -132,7 +132,7 @@ function Table() {
                     }
                 </tbody>
             </table>
-            <button type="submit" className="btn btn-primary" onClick={() => { Navigate('/') }}>Add More Data</button>
+            <button type="submit" className="btn btn-primary" onClick={() => { Navigate('/form') }}>Add More Data</button>
         </>
 
     )

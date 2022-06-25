@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import editEmployeData from '../Redux/middilware/editEmployeData';
 import getEmployeeData from '../Redux/middilware/getEmployeeData';
 import isdeleteEmployee from '../Redux/middilware/isdeleteEmployee';
+import Header from '../component/Header';
 
 
 function EmployeeTable() {
@@ -76,13 +77,14 @@ function EmployeeTable() {
     //3. return statement / jsx
     return (
         <>
+            
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <form  >
+                        <form >
                             <div className="mb-1">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
                                 <input type="texy" name="name" className="form-control" value={user.name} onChange={handalChange} id="exampleInputEmail1" />
@@ -120,8 +122,8 @@ function EmployeeTable() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            
-            <table className="table table-dark table-striped">
+            <Header/>
+            <table className="table table-dark table-striped ">
                 <thead>
                     <tr>
                         <th scope="col">id</th>

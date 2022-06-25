@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Header from '../component/Header';
 import { getDataTable } from '../Redux/ActionCreator/ActionCreator';
 
 interface Idata {
@@ -41,37 +42,41 @@ function Form() {
     }
     //3. return statement/jsx
     return (
-        <div className="container ">
-            <div className='row'>
-                <div className="col-6">
-                    <form className="position-absolute top-50 start-50 translate-middle border border-1 p-3" onSubmit={handalSubmit}>
-                        <h1>React form functional component using typeScript</h1>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
-                            <input type="texy" name="first_name" onChange={handalChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            <div id="emailHelp" className="form-text"></div>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
-                            <input type="text" name="last_name" onChange={handalChange} className="form-control" id="exampleInputPassword2" />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
-                            <input type="number" name="age" onChange={handalChange} className="form-control" id="exampleInputPassword3" />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
-                            <input type="email" name="email" onChange={handalChange} className="form-control" id="exampleInputPassword4" />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPassword5" className="form-label">Password</label>
-                            <input type="password" name="password" autoComplete="on" onChange={handalChange} className="form-control" id="exampleInputPassword5" />
-                        </div>
-                        <button type="submit" className="btn btn-primary ">Submit</button>
-                    </form>
+        <>
+            <Header />
+            <div className="container">
+                <div className='row'>
+                    <div className="col-6">
+                        <form className="position-absolute top-50 start-50 translate-middle border border-1 p-3 mt-5" onSubmit={handalSubmit}>
+                            <h1>React form functional component using typeScript</h1>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
+                                <input type="texy" name="first_name" onChange={handalChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                <div id="emailHelp" className="form-text"></div>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
+                                <input type="text" name="last_name" onChange={handalChange} className="form-control" id="exampleInputPassword2" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
+                                <input type="number" name="age" onChange={handalChange} className="form-control" id="exampleInputPassword3" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
+                                <input type="email" name="email" onChange={handalChange} className="form-control" id="exampleInputPassword4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputPassword5" className="form-label">Password</label>
+                                <input type="password" name="password" autoComplete="on" onChange={handalChange} className="form-control" id="exampleInputPassword5" />
+                            </div>
+                            <button type="submit" className="btn btn-primary ">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+        
     )
 }
 

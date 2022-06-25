@@ -20,7 +20,7 @@ function App() {
     <div className='App-header'>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Form />} />
+          <Route path='form' element={<Form />} />
           <Route path="table" element={<Table />} />
 
           <Route path='form1' element={<Form1 />} />
@@ -30,13 +30,14 @@ function App() {
           <Route path='employeestable' element={<EmployeeTable />} />
 
             {/* 1 */}
-          <Route path="userregister" element={<UserRegister />} />
+          <Route path="/" element={<UserRegister />} />
             {/* 2 */}
-          <Route path='login' element={<Login />} />
+          <Route  path='login' element={<Login />} />
             {/* 3 */}
           <Route path="getregisteruser" element={<GetRegisterUser />} />
             {/* 4 */}
           <Route path="changeprofile" element={<ChangeProfile />} />
+
 
           </Routes>
         </BrowserRouter>

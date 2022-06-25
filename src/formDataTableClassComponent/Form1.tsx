@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
+import Header from '../component/Header'
 import { addTodo } from '../Redux/ActionCreator/ActionCreator'
 import { withRouter } from './WithRouter'
 
@@ -56,37 +57,41 @@ class Form1 extends Component<any, MyState>{
         //console.log(this.state.student)
         console.log("props",this.props)
         return (
-            <div className="container ">
-                <div className='row'>
-                    <div className="col-6">
-                        <form className="position-absolute top-50 start-50 translate-middle border border-1 p-3" onSubmit={(e) => { this.handalSubmit(e) }}>
-                            <h1>React form class component using typeScript</h1>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
-                                <input type="texy" name="first_name" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                <div id="emailHelp" className="form-text"></div>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
-                                <input type="text" name="last_name" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword2" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
-                                <input type="number" name="age" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword3" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
-                                <input type="email" name="email" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword4" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword5" className="form-label">Password</label>
-                                <input type="password" name="password" autoComplete="on" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword5" />
-                            </div>
-                            <button type="submit" className="btn btn-primary" >Submit</button>
-                        </form>
+            <>
+                <Header />
+                <div className="container ">
+                    <div className='row'>
+                        <div className="col-6">
+                            <form className="position-absolute top-50 start-50 translate-middle border border-1 p-3 mt-5" onSubmit={(e) => { this.handalSubmit(e) }}>
+                                <h1>React form class component using typeScript</h1>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
+                                    <input type="texy" name="first_name" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    <div id="emailHelp" className="form-text"></div>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
+                                    <input type="text" name="last_name" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword2" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
+                                    <input type="number" name="age" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword3" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
+                                    <input type="email" name="email" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword4" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputPassword5" className="form-label">Password</label>
+                                    <input type="password" name="password" autoComplete="on" onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword5" />
+                                </div>
+                                <button type="submit" className="btn btn-primary" >Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
+            
         )
     }
 }
