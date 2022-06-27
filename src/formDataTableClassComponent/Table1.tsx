@@ -80,7 +80,7 @@ class Table1 extends Component<any> {
 
 
     render() {
-        console.log(this.props.user)
+        // console.log(this.props.user)
         const user = this.props.user
 
         return (

@@ -30,9 +30,13 @@ const settings = [{name:'Profile'}, {name:'Account'}, {name:'Dashboard'}, {name:
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-    const state = useSelector((state:any) => state?.login?.userData?.data?.data)
-    const navigate =useNavigate();
+    // const state = useSelector((state:any) => state?.login?.userData?.data?.data)
     const dispatch = useDispatch<any>();
+    const navigate =useNavigate();
+
+    let userImage:any = localStorage.getItem("userData");
+    let profilePic = JSON.parse(userImage);
+
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -42,7 +46,6 @@ const Header = () => {
 
     const handleCloseNavMenu = (nav:any) => {
         setAnchorElNav(null);
-        console.log(nav);
         navigate(nav.navigat);
     };
 
@@ -65,8 +68,7 @@ const Header = () => {
             }
         }
         if(setting.name === Profile){
-            console.log("change profile")
-            await dispatch(ChangeProfile())
+            navigate("/changeprofile")
         }
     };
     // console.log("state",state)
@@ -167,7 +169,7 @@ const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src={state.profilePic}/>
+                                <Avatar alt="Remy Sharp" src={profilePic.profilePic}/>
                             </IconButton>
                         </Tooltip>
                         <Menu

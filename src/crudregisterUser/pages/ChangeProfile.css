@@ -1,6 +1,7 @@
 
 section{
-    padding: 2em 0;
+    margin:10em;
+    padding: 0em 0;
 }
 section > label{
     margin: 0 auto;
@@ -8,14 +9,15 @@ section > label{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 10em;
-    height: 10em;
+    width: 6em;
+    height: 3em;
     cursor: pointer;
     font-size: large;
     border-radius: 350%;
 
 }
 label >input{
+    margin: -16px;
     display: none;
 }
 

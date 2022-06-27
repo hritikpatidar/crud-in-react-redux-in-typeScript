@@ -9,12 +9,12 @@ function isLogin(userData: any) {
         
         try {
             const response = await axios.post('http://192.168.1.11:8000/api/user/login', userData)
-            console.log("response",response);
-            await dispatch(login(response))
+            // console.log("response",response);
+            await dispatch(login(response.data.data))
          
             if (response.status === 200) {
                 localStorage.setItem("token", response?.data?.data?.token);
-                localStorage.setItem('userData', JSON.stringify(response?.data))
+                localStorage.setItem('userData', JSON.stringify(response?.data?.data))
                
             }
             return response

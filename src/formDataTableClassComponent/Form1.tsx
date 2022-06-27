@@ -55,7 +55,7 @@ class Form1 extends Component<any, MyState>{
     }
     render() {
         //console.log(this.state.student)
-        console.log("props",this.props)
+        // console.log("props",this.props)
         return (
             <>
                 <Header />

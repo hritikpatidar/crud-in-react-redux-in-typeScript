@@ -12,7 +12,6 @@ function isLogOut(token:any){
                    },
             })
             localStorage.clear();
-            console.log("logout",response)
             return response
         } catch (error) {
         
