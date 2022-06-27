@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import Header from '../component/Header'
 import IsRegister from '../Redux/middilware/IsRegister'
 
 
@@ -47,7 +46,6 @@ function AddEmployees() {
     //3. return statement 
     return (
         <>
-            <Header/>
             <div className="container ">
                 <div className='row justify-content-md-center mt-4'>
                     <div className="col-6">

@@ -1,8 +1,9 @@
 import './ChangeProfile.css'
 import {  useDispatch, useSelector } from 'react-redux'
-import Header from '../../component/Header'
 import ProfileUpdate from '../../Redux/middilware/ProfileUpdate'
-import { useState } from 'react'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 
 function ChangeProfile() {
     //1. state/hook
@@ -26,13 +27,24 @@ function ChangeProfile() {
     }
     
     
-  
+    function RedBar() {
+        return (
+          <Box
+            sx={{
+              height: 20,
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? 'rgba(255, 0, 0, 0.1)'
+                  : 'rgb(255 132 132 / 25%)',
+            }}
+          />
+        );
+      }
     // console.log("state",image)
 
     //3. return statement / jsx
     return (
         <>
-            <Header />
             <section>
                 <label>
                     <img src={userData.profilePic} />
@@ -40,7 +52,24 @@ function ChangeProfile() {
                 </label>
 
             </section>
-
+            <Container maxWidth="md">
+                <Box
+                    sx={{
+                        alignItems:"center",
+                        textAlign:"center",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        '& .MuiTextField-root': { width: '40ch' },
+                        
+                    }}
+                    >
+                   
+                    <TextField label={'userName'} id="margin-none" />
+                   
+                    <TextField label={'Email'} id="margin-dense" margin="dense" />
+                   
+                </Box>
+            </Container>
         </>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../component/Header';
 import { getDataTable } from '../Redux/ActionCreator/ActionCreator';
 
 interface Idata {
@@ -43,7 +42,6 @@ function Form() {
     //3. return statement/jsx
     return (
         <>
-            <Header />
             <div className="container">
                 <div className='row'>
                     <div className="col-6">

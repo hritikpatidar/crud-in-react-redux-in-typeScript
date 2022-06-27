@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import Header from '../component/Header'
 import { addTodo } from '../Redux/ActionCreator/ActionCreator'
 import { withRouter } from './WithRouter'
 
@@ -58,7 +57,6 @@ class Form1 extends Component<any, MyState>{
         // console.log("props",this.props)
         return (
             <>
-                <Header />
                 <div className="container ">
                     <div className='row'>
                         <div className="col-6">

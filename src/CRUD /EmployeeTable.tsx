@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import editEmployeData from '../Redux/middilware/editEmployeData';
 import getEmployeeData from '../Redux/middilware/getEmployeeData';
 import isdeleteEmployee from '../Redux/middilware/isdeleteEmployee';
-import Header from '../component/Header';
 
 
 function EmployeeTable() {
@@ -122,7 +121,6 @@ function EmployeeTable() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Header/>
             <table className="table table-dark table-striped ">
                 <thead>
                     <tr>

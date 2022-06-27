@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import IsGetRegisterUser from '../Redux/middilware/IsGetRegisterUser'
-import Swal from 'sweetalert2'
-import Header from '../component/Header'
 
 function GetRegisterUser() {
     //1. state/hook
@@ -26,7 +24,6 @@ function GetRegisterUser() {
     //3. return statement/jsx
     return (
         <>
-            <Header/>
             <table className="table table-dark table-striped">
                 <thead>
                     <tr>

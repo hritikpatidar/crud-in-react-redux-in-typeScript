@@ -12,6 +12,8 @@ import Login from './CRUD /Login';
 import GetRegisterUser from './crudregisterUser/GetRegisterUser';
 import ChangeProfile from './crudregisterUser/pages/ChangeProfile';
 import UserRegister from './crudregisterUser/UserRegister';
+import PrivateRoute from './Routing/privateRouting/PrivateRouting';
+import Layout from './component/Layout';
 
 function App() {
   const params = useParams()
@@ -20,27 +22,34 @@ function App() {
     <div className='App-header'>
       <BrowserRouter>
         <Routes>
-          <Route path='form' element={<Form />} />
-          <Route path="table" element={<Table />} />
+          <Route path="/" element={ <UserRegister /> }/>
+          <Route path="login" element={ <Login /> }/>
+          
+          <Route element={<PrivateRoute />}>
+            <Route path="" element={ <Layout />}>
+              <Route path="form" element={ <Form /> }/>
+              <Route path="table" element={<Table />} />
 
-          <Route path='form1' element={<Form1 />} />
-          <Route path='table1' element={<Table1 />} />
-            {/* A =>crud operation */}            
-          <Route path='addemployees' element={<AddEmployees />} />
-          <Route path='employeestable' element={<EmployeeTable />} />
+              <Route path='form1' element={<Form1 />} />
+              <Route path='table1' element={<Table1 />} />
 
-            {/* 1 */}
-          <Route path="/" element={<UserRegister />} />
-            {/* 2 */}
-          <Route  path='login' element={<Login />} />
-            {/* 3 */}
-          <Route path="getregisteruser" element={<GetRegisterUser />} />
-            {/* 4 */}
-          <Route path="changeprofile" element={<ChangeProfile />} />
+                {/* A =>crud operation */}            
+              <Route path='addemployees' element={<AddEmployees />} />
+              <Route path='employeestable' element={<EmployeeTable />} />
+
+                {/* 3 */}
+              <Route path="getregisteruser" element={<GetRegisterUser />} />
+
+                {/* 4 */}
+              <Route path="changeprofile" element={<ChangeProfile />} />
+            </Route>
+          </Route>
+          
+        </Routes>
+      </BrowserRouter>
 
 
-          </Routes>
-        </BrowserRouter>
+        
       
     </div>
       );
