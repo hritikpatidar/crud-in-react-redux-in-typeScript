@@ -62,7 +62,7 @@ function UserRegister() {
     //3.return statement /jsx
     return (
         <>
-        <Outlet />
+        
         <div className="container ">
             <div className='row justify-content-md-center mt-4'>
                 <div className="col-6">

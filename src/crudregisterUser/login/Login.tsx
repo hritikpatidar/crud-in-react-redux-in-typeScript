@@ -57,7 +57,6 @@ function Login() {
     //3, return statement / jsx syntex
     return (
         <>
-        <Outlet/>
         <Container>
             <Row className="justify-content-md-center mt-5">
                 <Col xs lg="4">

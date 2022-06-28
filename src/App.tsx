@@ -24,11 +24,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           
-        {/* <PublicRoute restricted={false} component={<UserRegister />} path="/" exact />
-        <PublicRoute restricted={false} component={<Login />} path="/" exact /> */}
-
-            {/* <Route path="/" element={ <UserRegister /> }/>
-            <Route path="login" element={ <Login /> }/> */}
           <Route element={<PublicRoute/>}>
               <Route  path="/" element={ <UserRegister /> }/>
               <Route  path="login" element={ <Login /> }/>
