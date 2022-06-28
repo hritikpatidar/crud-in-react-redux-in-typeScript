@@ -14,9 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import isLogOut from '../Redux/middilware/isLogOut';
+import isLogOut from '../../Redux/middilware/isLogOut';
 import Swal from 'sweetalert2'
-import ChangeProfile from '../crudregisterUser/pages/ChangeProfile';
 
 const pages = [
     { name: "Form", navigat: "/form" },
@@ -25,7 +24,7 @@ const pages = [
     { name: "Employees Table", navigat: "/employeestable" },
     { name: "Get Register User", navigat: "/getregisteruser" }
 ]
-const settings = [{name:'Profile'}, {name:'Account'}, {name:'Dashboard'}, {name:'Logout'}];
+const settings = [{name:'Change Profile'}, {name:'Logout'}];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -53,7 +52,7 @@ const Header = () => {
         // console.log(setting.name)
         setAnchorElUser(null);
         let Logout = "Logout";
-        let Profile = "Profile"
+        let Profile = "Change Profile"
         if(setting.name === Logout){
             var token:any = localStorage.getItem("token");
             var response = await dispatch(isLogOut(token))
@@ -77,53 +76,12 @@ const Header = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h4"
-                        noWrap
-                        component="a"
-                        href="/form"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        RR
-                    </Typography>
-
+                    <Typography variant="h4" noWrap component="a" href="/form" sx={{mr: 2, display: { xs: 'none', md: 'flex' }, fontFamily: 'monospace', fontWeight: 700, letterSpacing: '.3rem', color: 'inherit',textDecoration: 'none',}}> RR </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
+                        <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
                             <MenuIcon />
                         </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
+                        <Menu id="menu-appbar" anchorEl={anchorElNav} anchorOrigin={{vertical: 'bottom', horizontal: 'left',}} keepMounted transformOrigin={{vertical: 'top', horizontal: 'left', }} open={Boolean(anchorElNav)} onClose={handleCloseNavMenu} sx={{ display: { xs: 'block', md: 'none' },}} >
                             {pages.map((page:any,index:number) => (
                                 
                                 <MenuItem key={index} >
@@ -153,16 +111,8 @@ const Header = () => {
 
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        
                         {pages.map((page:any,index:number) => (                            
-                            <Button
-                                key={index}
-                                onClick={()=>handleCloseNavMenu(page)}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                
-                                {page.name}
-                            </Button>
+                            <Button key={index} onClick={()=>handleCloseNavMenu(page)} sx={{ my: 2, color: 'white', display: 'block' }}> {page.name} </Button>
                         ))}
                     </Box>
 
@@ -172,22 +122,7 @@ const Header = () => {
                                 <Avatar alt="Remy Sharp" src={profilePic.profilePic}/>
                             </IconButton>
                         </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
+                        <Menu sx={{ mt: '45px' }}id="menu-appbar" anchorEl={anchorElUser} anchorOrigin={{vertical: 'top',horizontal: 'right', }} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right', }} open={Boolean(anchorElUser)} onClose={handleCloseUserMenu}>
                             {settings.map((setting,index) => (
                                 <MenuItem key={index} onClick={()=>handleCloseUserMenu(setting)}>
                                     <Typography textAlign="center">{setting.name}</Typography>

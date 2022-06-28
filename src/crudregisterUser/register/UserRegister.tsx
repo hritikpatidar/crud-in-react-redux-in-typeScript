@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import IsUserRegister from '../Redux/middilware/IsUserRegister';
+import { Outlet, useNavigate } from 'react-router-dom';
+import IsUserRegister from '../../Redux/middilware/IsUserRegister';
 import Swal from 'sweetalert2'
 
 interface Iuser {
@@ -53,7 +53,7 @@ function UserRegister() {
         })
     }
     let handalImage=(e:any)=>{
-        console.log(e.target.files[0])
+        // console.log(e.target.files[0])
         // setFile(e.target.files[0])
         user.profilePic=e.target.files[0]
 
@@ -61,6 +61,8 @@ function UserRegister() {
 // console.log("state",state)
     //3.return statement /jsx
     return (
+        <>
+        <Outlet />
         <div className="container ">
             <div className='row justify-content-md-center mt-4'>
                 <div className="col-6">
@@ -93,6 +95,7 @@ function UserRegister() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

@@ -1,12 +1,10 @@
 import axios from "axios"
 import { login } from "../ActionCreator/ActionCreator"
 import Swal from 'sweetalert2'
-import Login from "../../CRUD /Login"
 
 
 function isLogin(userData: any) {
     return async (dispatch: any) => {
-        
         try {
             const response = await axios.post('http://192.168.1.11:8000/api/user/login', userData)
             // console.log("response",response);

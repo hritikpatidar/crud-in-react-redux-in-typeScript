@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import IsGetRegisterUser from '../Redux/middilware/IsGetRegisterUser'
+import IsGetRegisterUser from '../../Redux/middilware/IsGetRegisterUser'
 
 function GetRegisterUser() {
     //1. state/hook

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import IsRegister from '../Redux/middilware/IsRegister'
+import IsRegister from '../../Redux/middilware/IsRegister'
 
 
 interface Iuser {

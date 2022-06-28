@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button';
 import { Modal } from 'react-bootstrap';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
-import editEmployeData from '../Redux/middilware/editEmployeData';
-import getEmployeeData from '../Redux/middilware/getEmployeeData';
-import isdeleteEmployee from '../Redux/middilware/isdeleteEmployee';
+import editEmployeData from '../../Redux/middilware/editEmployeData';
+import getEmployeeData from '../../Redux/middilware/getEmployeeData';
+import isdeleteEmployee from '../../Redux/middilware/isdeleteEmployee';
 
 
 function EmployeeTable() {
@@ -45,7 +45,7 @@ function EmployeeTable() {
     let handalEdit = async () => {
         debugger
         var ind: any = index
-        console.log("state",state)
+        // console.log("state",state)
         var id = state[ind]._id
         
         const token1 = localStorage.getItem('token') || " ";
@@ -129,8 +129,8 @@ function EmployeeTable() {
                         <th scope="col">email</th>
                         <th scope="col">dob</th>
                         <th scope="col">position</th>
-                        <th scope="col">technologie_type</th>
                         <th scope="col">technologies_known</th>
+                        <th scope="col">technologie_type</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -148,9 +148,9 @@ function EmployeeTable() {
                                     <td>{cv.name}</td>
                                     <td>{cv.email}</td>
                                     <td>{result}</td>
-                                    <td>{cv.position}</td>
-                                    <td>{cv.technologie_type}</td>
+                                    <td>{cv.position}</td>                    
                                     <td>{cv.technologies_known}</td>
+                                    <td>{cv.technologie_type}</td>
                                     <td>
                                         <button className="btn btn-success btn-sm " onClick={() => handleShow(index)}>Edit</button>
                                         <button className="btn btn-danger btn-sm m-1" onClick={()=>handalDelete(index)}>Delete</button>

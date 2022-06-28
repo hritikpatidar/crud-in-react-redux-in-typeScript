@@ -1,19 +1,20 @@
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter , Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import AddEmployees from './CRUD /AddEmployees';
-import EmployeeTable from './CRUD /EmployeeTable';
+import AddEmployees from './CRUD /addEmployee/AddEmployees';
+import EmployeeTable from './CRUD /employeeTable/EmployeeTable';
 import Form from './formDataTable/Form';
 import Table from './formDataTable/Table';
 import Form1 from './formDataTableClassComponent/Form1';
 import Table1 from './formDataTableClassComponent/Table1';
-import Login from './CRUD /Login';
-import GetRegisterUser from './crudregisterUser/GetRegisterUser';
-import ChangeProfile from './crudregisterUser/pages/ChangeProfile';
-import UserRegister from './crudregisterUser/UserRegister';
+import Login from './crudregisterUser/login/Login';
+import GetRegisterUser from './crudregisterUser/getRegister/GetRegisterUser';
+import ChangeProfile from './crudregisterUser/changeProfile/ChangeProfile';
+import UserRegister from './crudregisterUser/register/UserRegister';
 import PrivateRoute from './Routing/privateRouting/PrivateRouting';
-import Layout from './component/Layout';
+import Layout from './component/layout/Layout';
+import PublicRoute from './Routing/publicRouting/PublicRouting';
 
 function App() {
   const params = useParams()
@@ -22,9 +23,18 @@ function App() {
     <div className='App-header'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={ <UserRegister /> }/>
-          <Route path="login" element={ <Login /> }/>
           
+        {/* <PublicRoute restricted={false} component={<UserRegister />} path="/" exact />
+        <PublicRoute restricted={false} component={<Login />} path="/" exact /> */}
+
+            {/* <Route path="/" element={ <UserRegister /> }/>
+            <Route path="login" element={ <Login /> }/> */}
+          <Route element={<PublicRoute/>}>
+              <Route  path="/" element={ <UserRegister /> }/>
+              <Route  path="login" element={ <Login /> }/>
+              <Route path="*" element={ <Login/> }/>
+          </Route>
+
           <Route element={<PrivateRoute />}>
             <Route path="" element={ <Layout />}>
               <Route path="form" element={ <Form /> }/>
@@ -42,6 +52,8 @@ function App() {
 
                 {/* 4 */}
               <Route path="changeprofile" element={<ChangeProfile />} />
+              <Route path="*" element={ <GetRegisterUser/> }/>
+
             </Route>
           </Route>
           

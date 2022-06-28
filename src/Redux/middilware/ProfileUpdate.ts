@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import { login } from "../ActionCreator/ActionCreator"
-
+import Swal from 'sweetalert2'
 
 function ProfileUpdate(newImage:any,auth_token:any){
     return async(dispatch:any)=>{
@@ -14,19 +14,18 @@ function ProfileUpdate(newImage:any,auth_token:any){
                     "Authorization": auth_token
                 }
             })
-            
             localStorage.setItem("userData",JSON.stringify(response.data))
-            
             await dispatch(login(response.data))
-
-        } catch (error) {
-            // if(error.response.status == 400){
-            //     Swal.fire(
-            //         error.code,
-            //         error.message,
-            //         'error'
-            //     )
-            // }
+            return response
+            debugger
+        } catch (error:any) {
+            if( error.response?.status == 401){
+                Swal.fire(
+                    error.code,
+                    error.message,
+                    'error'
+                )
+            }
         }
     }
 }

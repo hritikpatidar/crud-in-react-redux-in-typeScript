@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import isLogin from '../Redux/middilware/IsLogin';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import isLogin from '../../Redux/middilware/IsLogin';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 
@@ -21,7 +21,6 @@ let initialState: Iuser = {
 
 function Login() {
     //1. states/hook
-    const state = useSelector((state:any) => state?.login?.userData)
     const [userData, setUserData] = useState<Iuser>(initialState)
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
@@ -29,19 +28,25 @@ function Login() {
     //2. function defination
     let handalLogin =async (e:any) => {
         let res = await dispatch(isLogin(userData));
-       console.log(res)
-        if(res.status == 200){
+    //    console.log(res)
+        if(res?.status == 200){
             Swal.fire(
                 res.statusText,
                 res.data.message,                
                 'success'
             )
             navigate("/getregisteruser")
+        }else{
+            Swal.fire(
+                'Bad request',
+                'internet server error',
+                'error'
+            )
         }
     }
     
     let handalChange = (e: any) => {
-        const{ name,value} = e.target;
+        const{ name,value} = e?.target;
         setUserData({
             ...userData,
             [name]:value
@@ -51,6 +56,8 @@ function Login() {
 
     //3, return statement / jsx syntex
     return (
+        <>
+        <Outlet/>
         <Container>
             <Row className="justify-content-md-center mt-5">
                 <Col xs lg="4">
@@ -73,6 +80,7 @@ function Login() {
                 </Col>
             </Row>
         </Container>
+        </>
     )
 }
 export default Login

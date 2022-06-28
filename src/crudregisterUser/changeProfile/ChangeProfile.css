@@ -1,15 +1,15 @@
 
 section{
-    margin:10em;
+    margin:4em 26em;
     padding: 0em 0;
 }
 section > label{
-    margin: 0 auto;
+    margin: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 6em;
+    width: 10em;
     height: 3em;
     cursor: pointer;
     font-size: large;
@@ -17,6 +17,5 @@ section > label{
 
 }
 label >input{
-    margin: -16px;
     display: none;
 }
