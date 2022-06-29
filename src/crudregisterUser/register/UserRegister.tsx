@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import IsUserRegister from '../../Redux/middilware/IsUserRegister';
 import Swal from 'sweetalert2'
 
@@ -16,13 +16,12 @@ let initialState:Iuser={
     userName:"",
     email:"",
     profilePic: "" ,
-    password:"asdf@123",
-    confirmPassword:"asdf@123"
+    password:"",
+    confirmPassword:""
 }
 
 function UserRegister() {
     //1. state/hook 
-    const state = useSelector((state:any) => state?.userRegister?.userData)
     const [user, setUser] = useState<Iuser>(initialState);
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
@@ -31,10 +30,9 @@ function UserRegister() {
     //2. function defination
 
     let handalSubmit=async(e:any)=>{
-        // let data:any = new FormData();
-        // data.append("profilePic",)
-        // console.log("data",user)
-        await dispatch(IsUserRegister(user))
+        let state = await dispatch(IsUserRegister(user))
+
+
         if(state.status == 201){
             Swal.fire(
                 state.statusText,
@@ -57,6 +55,9 @@ function UserRegister() {
         // setFile(e.target.files[0])
         user.profilePic=e.target.files[0]
 
+    }
+    let handalLogin = () =>{
+        navigate("/login")
     }
 // console.log("state",state)
     //3.return statement /jsx
@@ -90,7 +91,8 @@ function UserRegister() {
                             <input type="password" name="confirmPassword"  className="form-control" onChange={handalChange} id="exampleInputPassword5" />
                         </div>
                       
-                        <button type="button" className="btn btn-primary" onClick={handalSubmit}>Submit</button>
+                        <button type="button" className="btn btn-primary " onClick={handalSubmit}>Submit</button>
+                        <button type="button" className="btn btn-primary ms-2" onClick={handalLogin}>login</button>
                     </form>
                 </div>
             </div>

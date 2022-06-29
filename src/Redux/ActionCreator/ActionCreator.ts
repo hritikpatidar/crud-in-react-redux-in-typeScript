@@ -1,5 +1,6 @@
 
-import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp, ChangeProfilePic, registerUser, getUserRegister} from "../contants/Constants"
+import { DataArrayTwoTone } from "@mui/icons-material"
+import { editTableData, getData, getDataForm1, login_api, addEmployees, EditEmp, empData, DeleteEmp, ChangeProfilePic, registerUser, getUserRegister, getFakeDataContants} from "../contants/Constants"
 
 export let getDataTable=(value:any)=>{
     return{
@@ -67,6 +68,13 @@ export const changeUserProfile=(image:string)=>{
     return{
         type:ChangeProfilePic,
         payload:image
+    }
+}
+
+export const getFakeActionCreator=(data:any)=>{
+    return{
+        type:getFakeDataContants,
+        payload:data
     }
 }
 

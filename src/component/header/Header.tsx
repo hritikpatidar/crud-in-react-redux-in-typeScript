@@ -22,7 +22,8 @@ const pages = [
     { name: "Form1", navigat: "/form1" },
     { name: "Add Employess", navigat: "/addemployees" },
     { name: "Employees Table", navigat: "/employeestable" },
-    { name: "Get Register User", navigat: "/getregisteruser" }
+    { name: "Get Register User", navigat: "/getregisteruser" },
+    { name: "Get Fake Data", navigat: "/getfakedata" }
 ]
 const settings = [{name:'Change Profile'}, {name:'Logout'}];
 

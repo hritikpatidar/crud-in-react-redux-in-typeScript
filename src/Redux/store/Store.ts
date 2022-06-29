@@ -4,6 +4,7 @@ import ChangeProfileReducer from "../Reducer/ChangeProfileReducer";
 import deleteEmployee from "../Reducer/DeleteEmployee";
 import EditEmployee from "../Reducer/EditEmployee";
 import GetEmpReducer from "../Reducer/GetEmpReducer";
+import GetFakeDataReducer from "../Reducer/GetFakeDataReducer";
 import GetRegisterUserReducer from "../Reducer/GetRegisterUserReducer";
 import LoginReducer from "../Reducer/LoginReducer";
 import RegisterReducer from "../Reducer/RootReducer";
@@ -18,7 +19,8 @@ let rootReducer = combineReducers({
     dltEmployee:deleteEmployee,
     userRegister:UserRegisterReducer,
     changeuserProfile:ChangeProfileReducer,
-    GetRegisterUser: GetRegisterUserReducer
+    GetRegisterUser: GetRegisterUserReducer,
+    fakeData :GetFakeDataReducer
 })
 
 const store = legacy_createStore(rootReducer,applyMiddleware(thunk));

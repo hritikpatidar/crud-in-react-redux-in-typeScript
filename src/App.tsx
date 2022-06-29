@@ -15,6 +15,7 @@ import UserRegister from './crudregisterUser/register/UserRegister';
 import PrivateRoute from './Routing/privateRouting/PrivateRouting';
 import Layout from './component/layout/Layout';
 import PublicRoute from './Routing/publicRouting/PublicRouting';
+import GetFakeData from './fakeRestApi/getFackData/GetFakeData';
 
 function App() {
   const params = useParams()
@@ -47,7 +48,11 @@ function App() {
 
                 {/* 4 */}
               <Route path="changeprofile" element={<ChangeProfile />} />
+              <Route path="/getfakedata" element={ <GetFakeData/> }/>
+
               <Route path="*" element={ <GetRegisterUser/> }/>
+
+
 
             </Route>
           </Route>
