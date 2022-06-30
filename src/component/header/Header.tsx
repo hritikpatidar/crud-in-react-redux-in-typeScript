@@ -86,7 +86,6 @@ const Header = () => {
                             {pages.map((page:any,index:number) => (
                                 
                                 <MenuItem key={index} >
-                                
                                 <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                             ))}
