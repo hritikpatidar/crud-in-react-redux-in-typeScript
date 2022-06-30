@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import isGetFakeData from '../../Redux/middilware/isGetFakeData'
+import './GetFakeData.css'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,9 +10,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container,TextField } from '@mui/material';
+import { Button, Container,Modal,TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
+import ModalPopap from '../modal/ModalPopap';
+    
+    const style = {
+      position: 'absolute' as 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };
 
 let GetFakeData = () => {
     //1. state/hook 
@@ -19,11 +33,14 @@ let GetFakeData = () => {
     const [searchData, setSearchData] = useState<any>(state)
     const [inputValue, setInputValue] = useState< any >('');
     const dispatch = useDispatch<any>();
+
+    const [open, setOpen] = useState(false);
+    const handalOpen = () => setOpen(true);
+    const handalClose = () => setOpen(false);
     useEffect(() => {
         getFakeData()
         
     }, [])
-   
 
     //2. function defination
     let getFakeData = async () => {
@@ -42,7 +59,7 @@ let GetFakeData = () => {
 
     let handalSearch = (e: any) => {
         // console.log(e.target.value)  
-        const {value}=e.target   
+        const {value}=e.target 
         
         setInputValue(value)
         let state1 =state.filter((cv: any) => {
@@ -65,13 +82,22 @@ let GetFakeData = () => {
         <Container maxWidth="lg">
 
             <TextField
+                className="mt-5"
                 value={inputValue}
                 id="filled-search"
                 label="Search field"
                 type="search"
-                variant="filled"
+                variant="outlined"
                 onChange={handalSearch}
             />
+            <Button className="mt-5  p-3 ms-3"  variant="outlined" onClick={handalOpen}>Open modal</Button>
+            {
+                open &&
+                < ModalPopap open={open} close={handalClose}/>
+            }
+            
+        
+
             <TableContainer component={Paper} className="mt-2">
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
