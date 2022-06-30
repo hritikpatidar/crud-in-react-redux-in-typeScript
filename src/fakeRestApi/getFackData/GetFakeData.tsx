@@ -34,7 +34,7 @@ let GetFakeData = () => {
     const [inputValue, setInputValue] = useState< any >('');
     const dispatch = useDispatch<any>();
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
     const handalOpen = () => setOpen(true);
     const handalClose = () => setOpen(false);
     useEffect(() => {
@@ -91,6 +91,8 @@ let GetFakeData = () => {
                 onChange={handalSearch}
             />
             <Button className="mt-5  p-3 ms-3"  variant="outlined" onClick={handalOpen}>Open modal</Button>
+
+            
             {
                 open &&
                 < ModalPopap open={open} close={handalClose}/>

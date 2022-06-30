@@ -13,7 +13,6 @@ function isLogin(userData: any) {
             if (response.status === 200) {
                 localStorage.setItem("token", response?.data?.data?.token);
                 localStorage.setItem('userData', JSON.stringify(response?.data?.data))
-               
             }
             return response
 

@@ -16,6 +16,7 @@ import PrivateRoute from './Routing/privateRouting/PrivateRouting';
 import Layout from './component/layout/Layout';
 import PublicRoute from './Routing/publicRouting/PublicRouting';
 import GetFakeData from './fakeRestApi/getFackData/GetFakeData';
+import Home from './material ui /home/Home';
 
 function App() {
   const params = useParams()
@@ -49,6 +50,9 @@ function App() {
                 {/* 4 */}
               <Route path="changeprofile" element={<ChangeProfile />} />
               <Route path="/getfakedata" element={ <GetFakeData/> }/>
+
+              {/* 5 */}
+              <Route path="/materialhome" element={ <Home/> }/>
 
               <Route path="*" element={ <GetRegisterUser/> }/>
 

@@ -23,7 +23,8 @@ const pages = [
     { name: "Add Employess", navigat: "/addemployees" },
     { name: "Employees Table", navigat: "/employeestable" },
     { name: "Get Register User", navigat: "/getregisteruser" },
-    { name: "Get Fake Data", navigat: "/getfakedata" }
+    { name: "Get Fake Data", navigat: "/getfakedata" },
+    { name: "Material UI", navigat: "/materialhome" },
 ]
 const settings = [{name:'Change Profile'}, {name:'Logout'}];
 
