@@ -14,18 +14,7 @@ import { Button, Container,Modal,TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import ModalPopap from '../modal/ModalPopap';
-    
-    const style = {
-      position: 'absolute' as 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: 400,
-      bgcolor: 'background.paper',
-      border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-    };
+  
 
 let GetFakeData = () => {
     //1. state/hook 
@@ -75,7 +64,7 @@ let GetFakeData = () => {
         
     }
     
-    console.log(searchData)
+    // console.log(searchData)
 
     //2. return statement /jsx
     return (

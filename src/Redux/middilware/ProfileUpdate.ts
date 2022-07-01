@@ -5,6 +5,7 @@ import { login } from "../ActionCreator/ActionCreator"
 import Swal from 'sweetalert2'
 
 function ProfileUpdate(newImage:any,auth_token:any){
+    
     return async(dispatch:any)=>{
         try {
             
@@ -17,7 +18,6 @@ function ProfileUpdate(newImage:any,auth_token:any){
             localStorage.setItem("userData",JSON.stringify(response.data))
             await dispatch(login(response.data))
             return response
-            debugger
         } catch (error:any) {
             if( error.response?.status == 401){
                 Swal.fire(

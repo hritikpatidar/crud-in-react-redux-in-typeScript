@@ -37,6 +37,7 @@ function ChangeProfile() {
             const {userName,email,_id} = state;
             const userData = {userName,email,_id};
             let token = localStorage.getItem("token")
+            debugger
             const res = await dispatch(ProfileUpdate(userData,token))
             // console.log("res",res)
             if(res.status == 200 ){
@@ -49,6 +50,7 @@ function ChangeProfile() {
             }
             
         }else{
+            debugger
             state.email = newData.email;
             let token = localStorage.getItem("token")
             const resss = await dispatch(ProfileUpdate(state,token))
