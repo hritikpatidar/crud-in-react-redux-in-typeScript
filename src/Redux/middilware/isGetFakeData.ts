@@ -4,6 +4,8 @@ import Swal from 'sweetalert2'
 
 
  function isGetFakeData() {
+
+    //  console.log(props)
     return async(dispatch:any) => {
         try {
             const response:any =await axios.get('https://jsonplaceholder.typicode.com/todos',{
@@ -12,6 +14,7 @@ import Swal from 'sweetalert2'
                     "Content-Type": "application/json" }
             })
             // console.log(response)
+            
             await dispatch(getFakeActionCreator(response.data))
             
             

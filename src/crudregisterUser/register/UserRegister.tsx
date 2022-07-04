@@ -1,8 +1,13 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {  useNavigate } from 'react-router-dom';
 import IsUserRegister from '../../Redux/middilware/IsUserRegister';
 import Swal from 'sweetalert2'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Card, CardContent } from '@mui/material';
 
 interface Iuser {
     userName:string,
@@ -23,6 +28,7 @@ let initialState:Iuser={
 function UserRegister() {
     //1. state/hook 
     const [user, setUser] = useState<Iuser>(initialState);
+    const [clicked, setClicked] = useState(true)
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
 
@@ -30,9 +36,11 @@ function UserRegister() {
     //2. function defination
 
     let handalSubmit=async(e:any)=>{
+        setClicked(false)
+        
         let state = await dispatch(IsUserRegister(user))
 
-
+        setClicked(true)
         if(state.status == 201){
             Swal.fire(
                 state.statusText,
@@ -41,7 +49,7 @@ function UserRegister() {
             )
             navigate("/login")
         }
-       
+        
     }
     let handalChange=(e:any)=>{
         const {name,value}= e.target;
@@ -64,10 +72,10 @@ function UserRegister() {
     return (
         <>
         
-        <div className="container ">
+        {/* <div className="container ">
             <div className='row justify-content-md-center mt-4'>
                 <div className="col-6">
-                    <form className=" position-absolute top-50 start-50 translate-middle border border-1 p-3" >
+                    <form className=" position-absolute top-50 start-50 translate-middle border border-1 p-3 " >
                         <h1>User Register</h1>
                         <div className="mb-1">
                             <label htmlFor="exampleInputEmail1" className="form-label">userName</label>
@@ -91,12 +99,76 @@ function UserRegister() {
                             <input type="password" name="confirmPassword"  className="form-control" onChange={handalChange} id="exampleInputPassword5" />
                         </div>
                       
-                        <button type="button" className="btn btn-primary " onClick={handalSubmit}>Submit</button>
+                        {
+                            clicked 
+                            ?
+                            <button type="button" className="btn btn-primary " onClick={handalSubmit}>Register</button>
+                            :                                   
+                            <button type="button" disabled className="btn btn-primary " onClick={handalSubmit}>Register</button>
+                        
+                        }
                         <button type="button" className="btn btn-primary ms-2" onClick={handalLogin}>login</button>
                     </form>
                 </div>
             </div>
-        </div>
+        </div> */}
+        <Container>
+            <Row className="justify-content-md-center mt-5">
+                <Col xs lg="4">
+                    <Card>
+                        <CardContent>
+                            <Form>
+                                <h1>React Functional Component </h1>
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>User Name</Form.Label>
+                                    <Form.Control type="userName" name="userName"   onChange={handalChange}  placeholder="Enter email" />
+                                </Form.Group>
+
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="email" name="email"   onChange={handalChange}  placeholder="Enter email" />
+                                </Form.Group>
+
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Profile Pic</Form.Label>
+                                    <Form.Control type="file" name="profilePic"  onChange={handalImage}  placeholder="Enter email" />
+                                </Form.Group>
+
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>passwrod</Form.Label>
+                                    <Form.Control type="password" name="password"  onChange={handalChange}  placeholder="Enter email" />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Confirm Password</Form.Label>
+                                    <Form.Control type="password" name="confirmPassword"  onChange={handalChange}  placeholder="Password" />
+                                </Form.Group>
+                                {
+                                    clicked 
+                                    ?
+                                    <Button variant="primary" type="button" onClick={handalSubmit}>
+                                        Register
+                                    </Button>
+                                    :                                   
+                                    <Button variant="primary" disabled type="button" onClick={handalSubmit}>
+                                        Register
+                                    </Button>
+                                
+                                }
+                                <Button variant="primary"  className='ms-2' type="button" onClick={handalLogin} >
+                                    login
+                                </Button>
+                                
+                            </Form> 
+                        </CardContent>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
         </>
     )
 }

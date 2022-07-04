@@ -6,6 +6,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function Calander() {
   const [value, setValue] = React.useState<Date | null>(null);
+  
+  console.log(value)
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <h1>calander</h1>

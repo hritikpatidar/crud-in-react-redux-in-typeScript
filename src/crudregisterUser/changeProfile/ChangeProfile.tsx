@@ -50,7 +50,6 @@ function ChangeProfile() {
             }
             
         }else{
-            debugger
             state.email = newData.email;
             let token = localStorage.getItem("token")
             const resss = await dispatch(ProfileUpdate(state,token))

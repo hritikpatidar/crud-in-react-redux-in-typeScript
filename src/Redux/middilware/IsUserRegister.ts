@@ -11,6 +11,7 @@ function IsUserRegister(user:any){
     formData.append("profilePic",user.profilePic);
     formData.append("password",user.password);
     formData.append("confirmPassword",user.confirmPassword);
+    
     return async(dispatch:any)=>{
         try {
             const response = await axios.post("http://192.168.1.11:8000/api/user/register",formData,{
@@ -18,7 +19,7 @@ function IsUserRegister(user:any){
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            debugger
+            
             // console.log("response",response);
             await dispatch(userRegister(response))
             return response
