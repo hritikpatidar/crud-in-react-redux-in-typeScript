@@ -1,3 +1,4 @@
+import React from "react"
 import './ChangeProfile.css'
 import {  useDispatch, useSelector } from 'react-redux'
 import ProfileUpdate from '../../Redux/middilware/ProfileUpdate'
@@ -10,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ChangeProfile() {
     //1. state/hook
-    const state:any = useSelector((state: any) => state?.login?.userData)
+    const state:any = useSelector((state: any) => state.login.userData)
     const [newData, setNewData] = useState<any>(state)
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
@@ -78,7 +79,7 @@ function ChangeProfile() {
                                 <Grid container spacing={1}>
                                     
                                     <Grid xs={12}  item>
-                                        <TextField type='email' label='Emal' name='email' value={newData?.email || ''} onChange={handalChangeData} placeholder='enter your email' variant='outlined' fullWidth required/>
+                                        <TextField type='email' label='Emal' name='email' value={newData.email || ''} onChange={handalChangeData} placeholder='enter your email' variant='outlined' fullWidth required/>
                                     </Grid>
                                     <Grid xs={12} sm={12} item>
                                         <section>

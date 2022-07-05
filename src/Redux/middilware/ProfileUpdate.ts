@@ -19,7 +19,7 @@ function ProfileUpdate(newImage:any,auth_token:any){
             await dispatch(login(response.data))
             return response
         } catch (error:any) {
-            if( error.response?.status == 401){
+            if( error.response.status == 401){
                 Swal.fire(
                     error.code,
                     error.message,

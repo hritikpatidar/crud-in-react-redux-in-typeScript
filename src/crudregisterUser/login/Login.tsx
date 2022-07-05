@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import "./Login.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,7 +35,7 @@ function Login() {
         // console.log(res)
         setClicked(true);
         console.log(res)
-        if(res?.status == 200){
+        if(res.status == 200){
             Swal.fire(
                 res.statusText,
                 res.data.message,                
@@ -48,7 +49,7 @@ function Login() {
     }
     
     let handalChange = (e: any) => {
-        const{ name,value} = e?.target;
+        const{ name,value} = e.target;
         setUserData({
             ...userData,
             [name]:value

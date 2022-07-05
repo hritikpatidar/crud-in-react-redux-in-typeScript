@@ -1,3 +1,4 @@
+import React from "react"
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { getDataTable } from '../Redux/ActionCreator/ActionCreator'
@@ -97,20 +98,20 @@ class Table1 extends Component<any> {
                                 <form onSubmit={(e) => this.handalSubmit(e)}>
                                     <div className="mb-1">
                                         <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
-                                        <input type="texy" name="first_name" value={this.state?.userData?.first_name || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        <input type="texy" name="first_name" value={this.state.userData.first_name || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                         <div id="emailHelp" className="form-text"></div>
                                     </div>
                                     <div className="mb-1">
                                         <label htmlFor="exampleInputPassword2" className="form-label">Last Name</label>
-                                        <input type="text" name="last_name" value={this.state?.userData?.last_name || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword2" />
+                                        <input type="text" name="last_name" value={this.state.userData.last_name || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword2" />
                                     </div>
                                     <div className="mb-1">
                                         <label htmlFor="exampleInputPassword3" className="form-label">Age</label>
-                                        <input type="number" name="age" value={this.state?.userData?.age || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword3" />
+                                        <input type="number" name="age" value={this.state.userData.age || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword3" />
                                     </div>
                                     <div className="mb-1">
                                         <label htmlFor="exampleInputPassword4" className="form-label">Email</label>
-                                        <input type="email" name="email" value={this.state?.userData?.email || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword4" />
+                                        <input type="email" name="email" value={this.state.userData.email || ''} onChange={(e) => { this.handalChange(e) }} className="form-control" id="exampleInputPassword4" />
                                     </div>
 
                                     <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>

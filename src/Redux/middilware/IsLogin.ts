@@ -10,14 +10,14 @@ function isLogin(userData: any) {
             // console.log("response",response);
             await dispatch(login(response.data.data))
             if (response.status === 200) {
-                localStorage.setItem("token", response?.data?.data?.token);
-                localStorage.setItem('userData', JSON.stringify(response?.data?.data))
+                localStorage.setItem("token", response.data.data.token);
+                localStorage.setItem('userData', JSON.stringify(response.data.data))
             }
             return response
 
         } catch (error:any) {
         
-            if (error?.response?.status === 404) {
+            if (error.response.status === 404) {
                 Swal.fire(
                     error.response.data.message,
                     error.message,

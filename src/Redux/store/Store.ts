@@ -19,7 +19,7 @@ let rootReducer = combineReducers({
     dltEmployee:deleteEmployee,
     userRegister:UserRegisterReducer,
     changeuserProfile:ChangeProfileReducer,
-    GetRegisterUser: GetRegisterUserReducer,
+    getRegisterUser: GetRegisterUserReducer,
     fakeData :GetFakeDataReducer
 })
 

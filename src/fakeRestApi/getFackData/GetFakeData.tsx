@@ -18,7 +18,7 @@ import ModalPopap from '../modal/ModalPopap';
 
 let GetFakeData = () => {
     //1. state/hook 
-    const state = useSelector((state: any) => state?.fakeData?.userData);
+    const state = useSelector((state: any) => state.fakeData.userData);
     const [searchData, setSearchData] = useState<any>(state)
     const [inputValue, setInputValue] = useState< any >('');
     const dispatch = useDispatch<any>();
@@ -26,13 +26,11 @@ let GetFakeData = () => {
     const [isLoading, setIsLoading]= useState<boolean>(true);
     const handalOpen = () => setOpen(true);
     const handalClose = () => setOpen(false);
-    useEffect(() => {
-        getFakeData()
-        
-    }, [])
+  
 
     //2. function defination
-    let getFakeData = async () => {
+    let getFakeData = async (e:any) => {
+        e.preventDefault();
         await dispatch(isGetFakeData())
         setIsLoading(false);
 
@@ -69,52 +67,61 @@ let GetFakeData = () => {
 
     //2. return statement /jsx
     return (
-        <Container maxWidth="lg">
-            <Fade
-                in={isLoading}
-            >
-                <CircularProgress />
-            </Fade>
-            
+        <Container maxWidth="xl">
+            <Button className="mt-5  p-3 ms-3"  variant="outlined" onClick={getFakeData}>Get data</Button>
             <TextField
-                className="mt-5"
-                value={inputValue}
-                id="filled-search"
-                label="Search field"
-                type="search"
-                variant="outlined"
-                onChange={handalSearch}
-            />
-            <Button className="mt-5  p-3 ms-3"  variant="outlined" onClick={handalOpen}>Open modal</Button>
+                    className="mt-5"
+                    value={inputValue}
+                    id="filled-search"
+                    label="Search field"
+                    type="search"
+                    variant="outlined"
+                    onChange={handalSearch}
+                />
+                  <Button className="mt-5  p-3 ms-3"  variant="outlined" onClick={handalOpen}>Open modal</Button>
+                {
+                    open &&
+                    < ModalPopap open={open} close={handalClose}/>
+                }
             {
-                open &&
-                < ModalPopap open={open} close={handalClose}/>
+                isLoading
+                ?
+                <Fade
+                    in={isLoading}
+                >
+                    <CircularProgress />
+                </Fade>
+                :              
+                <TableContainer component={Paper} className="mt-2">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow className="">
+                                <StyledTableCell>id</StyledTableCell>
+                                <StyledTableCell align="left">userId</StyledTableCell>
+                                <StyledTableCell align="left">tittle</StyledTableCell>
+                                <StyledTableCell align="left">completed</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {
+
+                                    searchData.slice(0, 10).map((cv: any, index: number) => (
+                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                                            <TableCell component="th" scope="row">{cv.id}</TableCell>
+                                            <TableCell align="left">{cv.userId}</TableCell>
+                                            <TableCell align="left">{cv.title}</TableCell>
+                                            <TableCell align="left">{cv.completed.toString()}</TableCell>
+                                        </TableRow>
+                                    ))
+                                    
+                            }
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             }
-            <TableContainer component={Paper} className="mt-2">
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow className="">
-                            <StyledTableCell>id</StyledTableCell>
-                            <StyledTableCell align="left">userId</StyledTableCell>
-                            <StyledTableCell align="left">tittle</StyledTableCell>
-                            <StyledTableCell align="left">completed</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {
-                                searchData.slice(0, 10).map((cv: any, index: number) => (
-                                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                                    <TableCell component="th" scope="row">{cv.id}</TableCell>
-                                    <TableCell align="left">{cv.userId}</TableCell>
-                                    <TableCell align="left">{cv.title}</TableCell>
-                                    <TableCell align="left">{cv.completed.toString()}</TableCell>
-                                </TableRow>
-                            ))
-                            
-                        }
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            
+            
+            
         </Container>
     )
 }

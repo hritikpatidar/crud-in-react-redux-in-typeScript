@@ -1,3 +1,4 @@
+import React from "react"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -47,9 +48,9 @@ function AddEmployees() {
     return (
         <>
             <div className="container ">
-                <div className='row justify-content-md-center mt-4'>
+                <div className='row justify-content-md-center '>
                     <div className="col-6">
-                        <form className=" position-absolute top-50 start-50 translate-middle border border-1 p-3" >
+                        <form className=" position-absolute top-50 start-50 translate-middle border border-1 p-3 mt-5" >
                             <h1>Add Employee</h1>
                             <div className="mb-1">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
