@@ -4,7 +4,7 @@ import axios from "axios"
 import { login } from "../ActionCreator/ActionCreator"
 import Swal from 'sweetalert2'
 
-function ProfileUpdate(newImage:any,auth_token:any){
+function isProfileUpdate(newImage:any,auth_token:any){
     
     return async(dispatch:any)=>{
         try {
@@ -30,4 +30,4 @@ function ProfileUpdate(newImage:any,auth_token:any){
     }
 }
 
-export default ProfileUpdate
+export default isProfileUpdate

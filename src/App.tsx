@@ -18,10 +18,11 @@ import Layout from './component/layout/Layout';
 import PublicRoute from './Routing/publicRouting/PublicRouting';
 import GetFakeData from './fakeRestApi/getFackData/GetFakeData';
 import Home from './materialUi /home/Home';
+import SelectImage from './task/selectedImage/SelectImage';
 
 function App() {
   const params = useParams()
-  console.log(params)
+  // console.log(params)
   return (
     <div className='App-header'>
       <BrowserRouter>
@@ -54,12 +55,12 @@ function App() {
 
               {/* 5 */}
               <Route path="/materialhome" element={ <Home/> }/>
+           
 
               <Route path="*" element={ <GetRegisterUser/> }/>
             </Route>
           </Route>
-         
-
+          <Route path="/taskepages" element={ <SelectImage /> }/>
           
         </Routes>
       </BrowserRouter>

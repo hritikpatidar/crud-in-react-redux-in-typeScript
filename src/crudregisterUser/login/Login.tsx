@@ -34,7 +34,7 @@ function Login() {
         let res = await dispatch(isLogin(userData));
         // console.log(res)
         setClicked(true);
-        console.log(res)
+        // console.log(res)
         if(res.status == 200){
             Swal.fire(
                 res.statusText,

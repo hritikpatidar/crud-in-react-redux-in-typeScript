@@ -1,7 +1,7 @@
 import React from "react"
 import './ChangeProfile.css'
 import {  useDispatch, useSelector } from 'react-redux'
-import ProfileUpdate from '../../Redux/middilware/ProfileUpdate'
+import isProfileUpdate from '../../Redux/middilware/isProfileUpdate'
 import TextField from '@mui/material/TextField';
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material';
 import { Button } from '@mui/material';
@@ -39,7 +39,7 @@ function ChangeProfile() {
             const userData = {userName,email,_id};
             let token = localStorage.getItem("token")
             debugger
-            const res = await dispatch(ProfileUpdate(userData,token))
+            const res = await dispatch(isProfileUpdate(userData,token))
             // console.log("res",res)
             if(res.status == 200 ){
                 Swal.fire(
@@ -53,7 +53,7 @@ function ChangeProfile() {
         }else{
             state.email = newData.email;
             let token = localStorage.getItem("token")
-            const resss = await dispatch(ProfileUpdate(state,token))
+            const resss = await dispatch(isProfileUpdate(state,token))
             // console.log("resss",resss)
             if(resss.status == 200 ){
                 Swal.fire(

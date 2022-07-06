@@ -23,7 +23,6 @@ function ReactSlider() {
         autoplay: true,
         autoplaySpeed: 2000,
     };
-    console.log(logo)
     return (
         <div className=" rcolor  border border-2">
         <Slider {...settings}>

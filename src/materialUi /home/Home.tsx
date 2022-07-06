@@ -10,7 +10,7 @@ import BasicTable from '../table/BasicTable'
 import CircularProgress from '@mui/material/CircularProgress';
 import ReactSlider from '../../slider/ReactSlider'
 
-function Home() {
+const Home =()=> {
   
     return (
         <>
@@ -29,7 +29,6 @@ function Home() {
                 <NestedList />
                 <CustomizedList />
                 <BasicTable />
-                
             </Container> 
 
         </>

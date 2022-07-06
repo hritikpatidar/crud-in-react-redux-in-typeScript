@@ -1,6 +1,5 @@
 import axios from "axios"
 import { empGetData } from "../ActionCreator/ActionCreator"
-import Swal from 'sweetalert2'
 
 
 function getEmployeeData(token1) {

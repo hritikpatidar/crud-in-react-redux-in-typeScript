@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import isGetFakeData from '../../Redux/middilware/isGetFakeData'
 import './GetFakeData.css'
@@ -10,7 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button, CircularProgress, Container,Fade,Modal,TextField } from '@mui/material';
+import { Button, CircularProgress, Container,Fade,TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import ModalPopap from '../modal/ModalPopap';
@@ -46,6 +46,7 @@ let GetFakeData = () => {
     }));
 
     let handalSearch = (e: any) => {
+        e.preventDefault();
         // console.log(e.target.value)  
         const {value}=e.target 
         

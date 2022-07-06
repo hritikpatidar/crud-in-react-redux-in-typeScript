@@ -25,6 +25,8 @@ const pages = [
     { name: "Get Register User", navigat: "/getregisteruser" },
     { name: "Get Fake Data", navigat: "/getfakedata" },
     { name: "Material UI", navigat: "/materialhome" },
+    { name: "Tasks", navigat: "/taskepages" },
+
 ]
 const settings = [{name:'Change Profile'}, {name:'Logout'}];
 

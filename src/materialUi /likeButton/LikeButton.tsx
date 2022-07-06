@@ -13,7 +13,7 @@ export default function LikeButton() {
     setValue(newValue);
   }
   
-  console.log(value);
+  // console.log(value);
   return (
     <div  className="mt-5">
       <Typography variant="h4">Like button</Typography>

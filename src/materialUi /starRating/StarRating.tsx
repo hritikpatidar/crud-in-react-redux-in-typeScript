@@ -18,7 +18,7 @@ export default function StarRating() {
         );
       }
 
-    console.log(value)
+    // console.log(value)
     return (
         <>
             <Typography variant="h4" className="mt-5">Rating</Typography>
