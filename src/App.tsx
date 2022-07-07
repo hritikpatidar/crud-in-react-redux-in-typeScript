@@ -18,7 +18,7 @@ import Layout from './component/layout/Layout';
 import PublicRoute from './Routing/publicRouting/PublicRouting';
 import GetFakeData from './fakeRestApi/getFackData/GetFakeData';
 import Home from './materialUi /home/Home';
-import SelectImage from './task/selectedImage/SelectImage';
+import SelectImage from './task/select-maltiple-image/SelectImage';
 
 function App() {
   const params = useParams()
