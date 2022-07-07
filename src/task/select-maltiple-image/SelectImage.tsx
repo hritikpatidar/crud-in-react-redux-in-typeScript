@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import image11 from "../../assets/images/11.webp";
 
 function SelectImage() {
     const [image, setImage] = useState<any>([])
