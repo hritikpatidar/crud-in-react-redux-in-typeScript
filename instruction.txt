@@ -1,0 +1,68 @@
+install typeScript templete command
+	-> npx create-react-app my-app --template typescript
+
+use in react project and using typescript using command 
+	-> npm install -g typescript    
+
+use in react
+
+api :-
+1.USER-LOGIN=> http://192.168.1.11:8000/api/user/login
+	post('http://192.168.1.11:8000/api/user/login', userData);
+	
+2.USER-REGISTER=> http://192.168.1.11:8000/api/user/register
+	post("http://192.168.1.11:8000/api/user/register",formData,{
+		headers: {
+		    'Content-Type': 'multipart/form-data'
+		}
+	    }
+	);
+	
+3.GET-REGISTER-USER => http://192.168.1.11:8000/api/user/registeredUser
+	get('http://192.168.1.11:8000/api/user/registeredUser',{
+                headers: { "Authorization": `${token1}` }
+            });
+            
+4.USER-PROFILE-UPDATE => http://192.168.1.11:8000/api/user/update
+	patch("http://192.168.1.11:8000/api/user/update",newImage,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    "Authorization": auth_token
+                }
+            });
+            
+5.USER-LOGOUT => http://192.168.1.11:8000/api/user/logout
+	get("http://192.168.1.11:8000/api/user/logout",{
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":token
+                   },
+            });
+            
+6.EMPLOYEE-REGISTER=> http://192.168.1.11:8000/api/employees
+	post('http://192.168.1.11:8000/api/employees',user,{
+                headers: {"Authorization" : token1} 
+            });
+            
+7.GET-EMPLOYEE-DATA => http://192.168.1.11:8000/api/employees
+	get("http://192.168.1.11:8000/api/employees", {
+                headers: { "Authorization": `${token1}` }
+            });
+            
+8.EDIT-EMPLOYEE-DATA => http://192.168.1.11:8000/api/employees/(ID)
+	patch('http://192.168.1.11:8000/api/employees/' + id, data,
+                { headers: { "Authorization": token1 } }
+            );
+            
+9.DELETE-EMPLOYEE-DATA => http://192.168.1.11:8000/api/employees/(ID)
+	delete('http://192.168.1.11:8000/api/employees/' + id,{
+                headers: { "Authorization": token1 } 
+            });
+            
+10.GET-FAKE-DATA-JSONOPLACEHOLDER => https://jsonplaceholder.typicode.com/todos
+	get('https://jsonplaceholder.typicode.com/todos',{
+                headers: { 
+                    "accept": "text/plain",
+                    "Content-Type": "application/json" }
+            });
+            
